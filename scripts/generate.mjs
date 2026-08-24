@@ -39,7 +39,21 @@ ATURAN MUTLAK:
 3. Wajib menambah NILAI UNIK BARU (sudut pandang berbeda dari konten lama):
    musim/curah hujan, jenis proyek, tips pemula, kesalahan umum, dsb.
 4. DILARANG sekadar mengganti kata tanpa substansi baru.
-5. Jawab HANYA JSON valid — tanpa penjelasan, tanpa blok kode.`;
+5. DILARANG MENGARANG klaim bisnis apa pun yang tidak ada di daftar FAKTA.
+   Tidak boleh: lapisan/pelapis anti-jamur atau anti-rayap, jasa potong sesuai
+   ukuran, cicilan/angsuran, garansi, jumlah tahun pengalaman, sertifikasi,
+   kapasitas stok spesifik, atau fasilitas lain di luar fakta.
+6. Ejaan bahasa Indonesia baku — periksa ulang, nol toleransi kata rusak/aneh.
+7. Jawab HANYA JSON valid — tanpa penjelasan, tanpa blok kode.
+
+FAKTA SATU-SATUNYA yang boleh disebut (jangan tambah apapun):
+- Kayu gelam asli hutan Sumatera, legalitas resmi dinas kehutanan
+- Sifat alami tahan air/busuk/jamur karena habitat aslinya rawa
+- Diameter 4–12 cm, panjang standar 4 meter
+- Harga mulai Rp15.000/batang
+- Bayar di tempat / COD (barang tiba dulu, baru bayar)
+- Gratis ongkos kirim Pulau Jawa; Sulawesi harga & ongkir dinego langsung
+- Order perusahaan tersedia sistem invoice`;
 
 function promptUntuk(file, jenis, lama) {
   const data = JSON.parse(readFileSync(file, 'utf8'));
@@ -121,6 +135,10 @@ async function panggilLLM(prompt) {
   throw kesalahanTerakhir;
 }
 
+// Klaim berbahaya yang TIDAK boleh muncul di konten mana pun (anti-halusinasi).
+const KLAIM_TERLARANG =
+  /(anti[-\s]?(jamur|rayap)|pelapis|lapisan|cicilan|angsur|garansi|\b\d+\s*(tahun|thn)\b|pengalaman\s+\d+|memotong|dipotong|sesuai\s+ukuran|custom)/i;
+
 function validasi(teks, isTutorial) {
   const mulai = teks.indexOf('{');
   const akhir = teks.lastIndexOf('}');
@@ -130,9 +148,13 @@ function validasi(teks, isTutorial) {
   for (const kata of ['gudang', 'Serang', 'Banten']) {
     if (obj.intro.includes(kata)) throw new Error(`kata terlarang di intro: ${kata}`);
   }
+  const klaim = KLAIM_TERLARANG.exec(JSON.stringify(obj));
+  if (klaim) throw new Error(`klaim terlarang terdeteksi: "${klaim[0]}"`);
   if (!Array.isArray(obj.faq) || obj.faq.length < 2 || obj.faq.length > 4) throw new Error('faq jumlah salah');
   for (const f of obj.faq) {
     if (typeof f.q !== 'string' || typeof f.a !== 'string' || !f.q || !f.a) throw new Error('faq tidak valid');
+    const k = KLAIM_TERLARANG.exec(f.q + ' ' + f.a);
+    if (k) throw new Error(`klaim terlarang di FAQ: "${k[0]}"`);
   }
   return obj;
 }
