@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Pricing from '../components/Pricing.astro';
+import KontenTerbaru from '../components/KontenTerbaru.astro';
 import { cities, regions } from '../data/cities';
 import { site, waLink, rupiah, products } from '../data/site';
 import { terdekatDates, formatTanggalId } from '../lib/dates.js';
@@ -128,6 +129,9 @@ const faq = [
   </section>
 
   <Pricing />
+  <div class="mx-auto max-w-6xl px-4">
+    <KontenTerbaru mulai={3} judul="Perbaruan Lainnya" />
+  </div>
 
   <!-- Semua area -->
   <section id="area-layanan" class="bg-wood-50 py-14">

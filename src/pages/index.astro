@@ -6,6 +6,7 @@ import Features from '../components/Features.astro';
 import About from '../components/About.astro';
 import Gallery from '../components/Gallery.astro';
 import Coverage from '../components/Coverage.astro';
+import KontenTerbaru from '../components/KontenTerbaru.astro';
 import Contact from '../components/Contact.astro';
 import { site } from '../data/site';
 import { homeDates, formatTanggalId } from '../lib/dates.js';
@@ -22,6 +23,7 @@ import { homeDates, formatTanggalId } from '../lib/dates.js';
   </p>
   <Pricing />
   <Features />
+  <KontenTerbaru mulai={0} judul="Baru Diperbarui" />
   <About />
   <Gallery />
   <Coverage />

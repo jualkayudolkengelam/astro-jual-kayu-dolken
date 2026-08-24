@@ -1,0 +1,65 @@
+---
+import { cityPageDates, formatTanggalId } from '../lib/dates.js';
+import { TOPIK_LOKAL } from '../../scripts/topik.mjs';
+import { cities as CITIES } from '../data/cities';
+
+type Props = { mulai?: number; judul?: string };
+const { mulai = 0, judul = 'Baru Diperbarui' } = Astro.props;
+
+// Muat seluruh konten kota sekali (build-time).
+const files = import.meta.glob<{ intro: string; konteks?: { topik: string; teks: string }[] }>(
+  '../data/konten-kota/*.json',
+  { eager: true }
+);
+
+const daftar = CITIES.map((kota) => {
+  const file = files[`../data/konten-kota/${kota.slug}.json`];
+  const tanggal = cityPageDates(kota.slug).updated;
+  const blok = file?.konteks?.[file.konteks.length - 1];
+  const sumber = blok?.teks ?? file?.intro ?? '';
+  // Cuplikan ±90 karakter, dipotong di batas kata.
+  const cuplikan =
+    sumber.length > 93 ? sumber.slice(0, 93).replace(/\s+\S*$/, '') + '…' : sumber;
+  return {
+    nama: kota.name,
+    slug: kota.slug,
+    tanggal,
+    topik: blok?.topik,
+    cuplikan,
+  };
+})
+  .sort((a, b) => b.tanggal.localeCompare(a.tanggal) || a.slug.localeCompare(b.slug))
+  .slice(mulai, mulai + 3);
+
+const infoTopik = (id?: string) => TOPIK_LOKAL.find((t) => t.id === id);
+---
+
+<section aria-label={judul} class="reveal mt-12">
+  <h2 class="mb-4 flex items-center gap-2 text-2xl font-extrabold tracking-tight text-wood-900">
+    <span>🕒</span> {judul}
+  </h2>
+  <div class="grid gap-4 md:grid-cols-3">
+    {
+      daftar.map((k) => {
+        const t = infoTopik(k.topik);
+        return (
+          <a
+            href={`/kayu-dolken-${k.slug}/`}
+            class="group flex flex-col rounded-xl border border-wood-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+          >
+            <p class="text-lg font-bold text-wood-900 group-hover:text-moss-600">🏙️ {k.nama}</p>
+            {t && (
+              <span class="mt-1.5 inline-flex w-fit rounded-full bg-moss-100 px-2.5 py-0.5 text-xs font-semibold text-moss-700">
+                {t.ikon} {t.label}
+              </span>
+            )}
+            <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-wood-600">{k.cuplikan}</p>
+            <p class="mt-auto pt-3 text-xs font-medium text-wood-400">
+              🕒 Diperbarui {formatTanggalId(k.tanggal)}
+            </p>
+          </a>
+        );
+      })
+    }
+  </div>
+</section>
