@@ -76,12 +76,6 @@ Tanggal "Terakhir diperbarui" di halaman & sitemap otomatis ikut berganti sesuai
 Letakkan file foto (jpg/png/webp) di `src/assets/gallery/` lalu tambahkan keterangannya di
 `src/data/gallery.ts`. Untuk halaman kota, foto otomatis diambil dari `public/images/kota/<nama-kota>/`.
 
-### Catatan teknis singkat
-
-- Setiap kota punya halaman sendiri (`/kayu-dolken-bekasi/`, dst) agar mudah ditemukan di Google
-- Sitemap & tanggal mengikuti standar Google (sudah lolos uji otomatis)
-- Hosting saat ini: server aaPanel sendiri (`kayudolken.lan`, port 8088 via IP) — siap dipindah ke Vercel/domain produksi kapan saja karena outputnya HTML statis murni
-
 ---
 
 © Jual Kayu Dolken Gelam — Amirudin Abdul Karim
