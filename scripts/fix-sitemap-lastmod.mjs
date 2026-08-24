@@ -4,7 +4,7 @@
  * dan tanggal terlihat di halaman.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
-import { homeDates, cityDates, terdekatDates } from '../src/lib/dates.js';
+import { homeDates, terdekatDates, cityPageDates } from '../src/lib/dates.js';
 import { SITE_URL } from '../src/lib/site-url.js';
 
 const FILE = 'dist/sitemap-0.xml';
@@ -13,7 +13,9 @@ const SITE = SITE_URL;
 function lastmodFor(pathname) {
   if (pathname === '/') return homeDates.updated;
   if (pathname === '/jual-kayu-dolken-terdekat/') return terdekatDates.updated;
-  return cityDates.updated;
+  const m = pathname.match(/^\/kayu-dolken-(.+?)\/$/);
+  if (m) return cityPageDates(decodeURIComponent(m[1])).updated;
+  return homeDates.updated;
 }
 
 let xml = readFileSync(FILE, 'utf8');
@@ -27,4 +29,4 @@ xml = xml.replace(/<url>(.*?)<\/url>/gs, (block, inner) => {
   return `<url>${newInner}</url>`;
 });
 writeFileSync(FILE, xml);
-console.log(`sitemap-0.xml: lastmod disamakan dgn sumber git (${cityDates.updated})`);
+console.log(`sitemap-0.xml: lastmod disamakan dgn sumber git (${homeDates.updated})`);

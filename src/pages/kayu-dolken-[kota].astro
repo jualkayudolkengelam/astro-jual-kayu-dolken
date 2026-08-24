@@ -4,7 +4,7 @@ import Pricing from '../components/Pricing.astro';
 import TerdekatCard from '../components/TerdekatCard.astro';
 import { cities, neighborsOf, type City } from '../data/cities';
 import { site, waLink, rupiah, products } from '../data/site';
-import { cityDates, formatTanggalId } from '../lib/dates.js';
+import { cityPageDates, formatTanggalId } from '../lib/dates.js';
 
 export function getStaticPaths() {
   return cities.map((city) => ({
@@ -21,17 +21,24 @@ const neighbors = neighborsOf(city);
 const isSulawesi = city.region.startsWith('Sulawesi');
 const cheapest = products[0].price;
 
-const introVariants = [
-  `Mencari jual kayu dolken terdekat di ${city.name}? Kami melayani pengiriman ke ${city.name} dan sekitarnya. Kayu berasal dari hutan Sumatera dengan legalitas resmi dinas kehutanan — kuat, lurus, dan tahan bertahun-tahun di dalam tanah.`,
-  `Butuh kayu dolken murah di ${city.name}? Telepon saja — harga paling bersaing dan bisa bayar di tempat untuk area layanan kami. Sudah banyak kontraktor dan pemilik rumah di wilayah ${city.region} yang menjadi pelanggan tetap kami.`,
-  `Pesan kayu dolken gelam untuk pondasi cerucuk proyek Anda di ${city.name} sekarang. Stok selalu tersedia dalam empat ukuran diameter — jumlah kecil maupun partai besar, tim kami siap mengatur jadwal kiriman ke lokasi Anda.`,
-];
-const idx = cities.findIndex((c) => c.slug === city.slug);
-let intro = introVariants[idx % introVariants.length];
+// Konten unik per kota dari file sendiri (fallback generik bila belum dibuat).
+type KontenKota = { intro: string; faq: { q: string; a: string }[] };
+const kontenFiles = import.meta.glob<KontenKota>('../data/konten-kota/*.json', {
+  eager: true,
+});
+const konten: KontenKota =
+  kontenFiles[`../data/konten-kota/${city.slug}.json`] ?? {
+    intro: `Jual kayu dolken gelam murah untuk area ${city.name} dan sekitarnya — kualitas terbaik dari hutan Sumatera, siap dikirim ke lokasi Anda.`,
+    faq: [],
+  };
+
+let intro = konten.intro;
 if (isSulawesi) {
   intro +=
     ' Harga dan ongkos kirim paling pas dibicarakan langsung lewat telepon atau WhatsApp.';
 }
+
+const dates = cityPageDates(city.slug);
 
 const title = isSulawesi
   ? `Jual Kayu Dolken di ${city.name} — Melayani Kirim, Harga Bisa Nego`
@@ -41,7 +48,7 @@ const description = isSulawesi
   : `Jual kayu dolken terdekat di ${city.name}, mulai ${rupiah(cheapest)}/batang. Diameter 4–12 cm panjang 4 m, bayar setelah barang sampai, gratis ongkos kirim. Telepon ${site.phones[0].label}.`;
 ---
 
-<Base title={title} description={description} dateCreated={cityDates.created} dateUpdated={cityDates.updated}>
+<Base title={title} description={description} dateCreated={dates.created} dateUpdated={dates.updated}>
   <!-- Hero mini -->
   <section class="relative overflow-hidden bg-wood-900 text-white">
     <div
@@ -62,7 +69,7 @@ const description = isSulawesi
         {intro}
       </p>
       <p class="reveal mt-3 text-xs font-medium text-wood-400">
-        Terakhir diperbarui: {formatTanggalId(cityDates.updated)}
+        Terakhir diperbarui: {formatTanggalId(dates.updated)}
       </p>
       <div class="reveal mt-7 flex flex-wrap gap-3">
         <a href={`tel:${site.phones[0].tel}`} class="inline-flex items-center gap-2 rounded-xl bg-wood-100 px-5 py-3 font-bold text-wood-900 shadow-lg transition hover:bg-white hover:-translate-y-0.5">
@@ -186,6 +193,26 @@ const description = isSulawesi
           ))}
         </ul>
       </aside>
+
+      {
+        konten.faq.length > 0 && (
+          <section aria-label={`Pertanyaan umum kayu dolken ${city.name}`} class="mt-10">
+            <h2 class="reveal mb-4 text-2xl font-extrabold tracking-tight text-wood-900">
+              Pertanyaan Umum — Kayu Dolken {city.name}
+            </h2>
+            <div class="space-y-3">
+              {konten.faq.map((f) => (
+                <details class="reveal rounded-xl border border-wood-100 bg-wood-50/60 p-4 open:bg-white open:shadow-sm">
+                  <summary class="cursor-pointer list-none font-bold text-wood-800 [&::-webkit-details-marker]:hidden">
+                    {f.q}
+                  </summary>
+                  <p class="mt-2 text-sm leading-relaxed text-wood-600">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )
+      }
     </div>
   </section>
 

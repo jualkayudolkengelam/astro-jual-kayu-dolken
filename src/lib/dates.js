@@ -64,5 +64,9 @@ export function formatTanggalId(iso) {
 }
 
 export const homeDates = pageDates('src/pages/index.astro');
-export const cityDates = pageDates('src/pages/kayu-dolken-[kota].astro');
 export const terdekatDates = pageDates('src/pages/jual-kayu-dolken-terdekat.astro');
+
+/** Tanggal halaman kota = tanggal file kontennya sendiri (bisa beda tiap kota). */
+export function cityPageDates(slug) {
+  return pageDates(`src/data/konten-kota/${slug}.json`);
+}
