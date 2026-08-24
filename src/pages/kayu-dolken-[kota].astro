@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import Pricing from '../components/Pricing.astro';
+import { cities, neighborsOf, type City } from '../data/cities';
+import { site, waLink, rupiah, products } from '../data/site';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { kota: city.slug },
+    props: { city },
+  }));
+}
+
+interface Props {
+  city: City;
+}
+const { city } = Astro.props;
+const neighbors = neighborsOf(city);
+const cheapest = products[0].price;
+
+const introVariants = [
+  `Kami melayani pengiriman kayu dolken gelam ke ${city.name} dan sekitarnya langsung dari gudang kami di Serang, Banten. Kayu berasal dari hutan Sumatera dengan legalitas resmi dinas kehutanan — kuat, lurus, dan tahan bertahun-tahun di dalam tanah.`,
+  `Mencari kayu dolken murah di ${city.name}? Kami kirim gratis sampai lokasi Anda dan pembayaran bisa dilakukan setelah barang tiba. Sudah banyak kontraktor dan pemilik rumah di wilayah ${city.region} yang menjadi pelanggan tetap kami.`,
+  `Pesan kayu dolken gelam untuk pondasi cerucuk proyek Anda di ${city.name} sekarang. Stok selalu tersedia dalam empat ukuran diameter, siap diantar oleh armada kami tanpa biaya ongkos kirim ke seluruh ${city.region}.`,
+];
+const idx = cities.findIndex((c) => c.slug === city.slug);
+const intro = introVariants[idx % introVariants.length];
+
+const title = `Jual Kayu Dolken ${city.name} Murah — Bayar di Tempat, Gratis Ongkir`;
+const description = `Harga kayu dolken gelam ${city.name} mulai ${rupiah(cheapest)}/batang. Diameter 4–12 cm panjang 4 m, bayar setelah barang sampai, gratis ongkos kirim. Telepon ${site.phones[0].label}.`;
+---
+
+<Base title={title} description={description}>
+  <!-- Hero mini -->
+  <section class="relative overflow-hidden bg-wood-900 text-white">
+    <div
+      class="absolute inset-0 opacity-20"
+      style="background: radial-gradient(50rem 24rem at 85% -10%, #c99a5f55, transparent), radial-gradient(35rem 20rem at 5% 120%, #16a34a33, transparent);"
+      aria-hidden="true">
+    </div>
+    <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <nav class="mb-6 text-sm text-wood-300" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white hover:underline">Beranda</a>
+        <span class="mx-1.5">›</span>
+        <span class="text-wood-100">Kayu Dolken {city.name}</span>
+      </nav>
+      <h1 class="reveal max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl">
+        Jual Kayu Dolken Gelam <span class="text-wood-300">{city.name}</span> Murah
+      </h1>
+      <p class="reveal mt-4 max-w-2xl leading-relaxed text-wood-100/90">
+        {intro}
+      </p>
+      <div class="reveal mt-7 flex flex-wrap gap-3">
+        <a href={`tel:${site.phones[0].tel}`} class="inline-flex items-center gap-2 rounded-xl bg-wood-100 px-5 py-3 font-bold text-wood-900 shadow-lg transition hover:bg-white hover:-translate-y-0.5">
+          ☎ Telepon {site.phones[0].label}
+        </a>
+        <a
+          href={waLink(`Halo, saya dari ${city.name} mau pesan kayu dolken gelam. Mohon info harga & jadwal pengirimannya.`)}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 rounded-xl bg-moss-500 px-5 py-3 font-bold text-white shadow-lg shadow-black/20 transition hover:bg-moss-600 hover:-translate-y-0.5"
+        >
+          💬 WhatsApp Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info strip -->
+  <section class="border-b border-wood-100 bg-white">
+    <div class="mx-auto grid max-w-6xl grid-cols-2 divide-wood-100 px-4 py-6 text-center sm:grid-cols-4 sm:divide-x">
+      <div class="px-2"><p class="text-xl font-extrabold text-wood-800">Rp15rb+</p><p class="text-xs font-medium text-wood-500">per batang</p></div>
+      <div class="px-2"><p class="text-xl font-extrabold text-wood-800">Ø 4–12 cm</p><p class="text-xs font-medium text-wood-500">4 ukuran</p></div>
+      <div class="px-2"><p class="text-xl font-extrabold text-moss-600">GRATIS</p><p class="text-xs font-medium text-wood-500">ongkos kirim</p></div>
+      <div class="px-2"><p class="text-xl font-extrabold text-wood-800">COD</p><p class="text-xs font-medium text-wood-500">bayar ditempat</p></div>
+    </div>
+  </section>
+
+  <Pricing />
+
+  <!-- Konten lokal SEO -->
+  <section class="bg-white py-14">
+    <div class="mx-auto max-w-3xl px-4">
+      <h2 class="reveal mb-4 text-2xl font-extrabold tracking-tight text-wood-900">
+        Pengiriman Kayu Dolken ke {city.name}
+      </h2>
+      <div class="reveal space-y-3 leading-relaxed text-wood-600">
+        <p>
+          Wilayah {city.name} termasuk area layanan rutin kami di {city.region}. Armada berangkat
+          dari workshop di Jl. Raya Banten KM 7, Kasemen, Kota Serang — sehingga barang yang Anda terima
+          segar dari stok gudang, bukan stok penumpang yang sudah lama menunggu.
+        </p>
+        <p>
+          Untuk order perusahaan (Persero) di {city.name}, kami menerima sistem pembayaran penagihan atau invoice.
+          Cukup telepon atau WhatsApp nomor di atas, sebutkan jumlah batang dan diameter yang dibutuhkan,
+          tim kami akan memberikan jadwal kiriman terdekat beserta total biayanya.
+        </p>
+      </div>
+
+      <h2 class="reveal mt-8 mb-4 text-2xl font-extrabold tracking-tight text-wood-900">
+        Harga Kayu Dolken {city.name} Terbaru
+      </h2>
+      <div class="reveal overflow-x-auto rounded-xl border border-wood-100">
+        <table class="w-full min-w-[420px] text-left text-sm">
+          <thead class="bg-wood-50 text-xs uppercase tracking-wide text-wood-500">
+            <tr><th class="px-4 py-3">Diameter</th><th class="px-4 py-3">Panjang</th><th class="px-4 py-3 text-right">Harga / Batang</th></tr>
+          </thead>
+          <tbody class="divide-y divide-wood-100 bg-white">
+            {
+              products.map((p) => (
+                <tr>
+                  <td class="px-4 py-3 font-semibold text-wood-800">ø {p.size}</td>
+                  <td class="px-4 py-3 text-wood-600">{p.length}</td>
+                  <td class="px-4 py-3 text-right font-bold text-wood-900">{rupiah(p.price)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="reveal mt-8 rounded-xl border border-wood-200 bg-wood-50 p-5">
+        <p class="mb-2 text-sm font-bold text-wood-800">Kota lain di dekat {city.name}:</p>
+        <ul class="flex flex-wrap gap-2">
+          {neighbors.map((n) => (
+            <li>
+              <a href={`/kayu-dolken-${n.slug}`} class="inline-block rounded-full border border-wood-300 bg-white px-3 py-1 text-xs font-semibold text-wood-700 transition hover:border-wood-500 hover:text-wood-900">
+                Kayu Dolken {n.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+</Base>

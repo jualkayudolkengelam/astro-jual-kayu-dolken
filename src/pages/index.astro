@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Pricing from '../components/Pricing.astro';
+import Features from '../components/Features.astro';
+import About from '../components/About.astro';
+import Gallery from '../components/Gallery.astro';
+import Coverage from '../components/Coverage.astro';
+import Contact from '../components/Contact.astro';
+import { site } from '../data/site';
+---
+
+<Base title={`${site.name} — Kayu Dolken Murah, Bayar di Tempat`}>
+  <Hero />
+  <Pricing />
+  <Features />
+  <About />
+  <Gallery />
+  <Coverage />
+  <Contact />
+</Base>

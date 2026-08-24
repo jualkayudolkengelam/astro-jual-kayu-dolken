@@ -1,0 +1,65 @@
+---
+import { products, rupiah, waLink } from '../data/site';
+---
+
+<section id="harga" class="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 md:py-24">
+  <div class="reveal mx-auto mb-12 max-w-xl text-center">
+    <p class="text-sm font-bold uppercase tracking-widest text-wood-500">Daftar Harga</p>
+    <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-wood-900 sm:text-4xl">
+      Harga Kayu Dolken per Batang
+    </h2>
+    <p class="mt-3 text-wood-600">
+      Panjang standar 400 cm (4 meter). Kualitas terbaik dengan harga termurah —
+      silakan bandingkan dengan penjual lain.
+    </p>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      products.map((p) => (
+        <article
+          class:list={[
+            'reveal relative flex flex-col rounded-2xl border bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl',
+            p.popular ? 'border-wood-500 ring-2 ring-wood-400/50' : 'border-wood-100',
+          ]}
+        >
+          {p.popular && (
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-wood-800 px-3 py-1 text-xs font-bold text-white">
+              TERLARIS ★
+            </span>
+          )}
+          <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-wood-100 text-2xl" aria-hidden="true">
+            🪵
+          </div>
+          <h3 class="font-bold text-wood-900">
+            Diameter {p.size}
+            <span class="block text-sm font-medium text-wood-500">Panjang {p.length}</span>
+          </h3>
+          <p class="mt-4 text-3xl font-extrabold tracking-tight text-wood-800">
+            {rupiah(p.price)}
+            <span class="text-sm font-semibold text-wood-500">/batang</span>
+          </p>
+          <p class="mt-3 flex-1 text-sm leading-relaxed text-wood-600">{p.note}</p>
+          <a
+            href={waLink(`Halo, saya mau pesan kayu dolken diameter ${p.size} panjang ${p.length}. Mohon info ketersediaannya.`)}
+            target="_blank"
+            rel="noopener"
+            class:list={[
+              'mt-5 rounded-lg px-4 py-2.5 text-center text-sm font-semibold transition',
+              p.popular
+                ? 'bg-moss-500 text-white hover:bg-moss-600'
+                : 'bg-wood-100 text-wood-900 hover:bg-wood-200',
+            ]}
+          >
+            Pesan Ukuran Ini
+          </a>
+        </article>
+      ))
+    }
+  </div>
+
+  <p class="reveal mt-8 text-center text-sm text-wood-600">
+    Butuh jumlah besar atau order perusahaan?
+    <a href="#kontak" class="font-semibold text-wood-800 underline underline-offset-4">Tersedia sistem invoice &amp; penagihan →</a>
+  </p>
+</section>

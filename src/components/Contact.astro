@@ -1,0 +1,91 @@
+---
+import { site, faqs, waLink } from '../data/site';
+---
+
+<section id="kontak" class="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 md:py-24">
+  <div class="reveal mx-auto mb-12 max-w-xl text-center">
+    <p class="text-sm font-bold uppercase tracking-widest text-wood-500">Hubungi Kami</p>
+    <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-wood-900 sm:text-4xl">
+      Jangan Ragu, Jangan Sungkan!
+    </h2>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-5">
+    <!-- Info kontak -->
+    <div class="space-y-5 lg:col-span-2">
+      <div class="reveal rounded-2xl border border-wood-100 bg-white p-6 shadow-sm">
+        <h3 class="mb-1 text-lg font-bold text-wood-900">Telepon / WhatsApp</h3>
+        <p class="mb-4 text-sm text-wood-600">{site.owner}</p>
+        <ul class="space-y-2.5">
+          {
+            site.phones.map((p) => (
+              <li>
+                <a href={`tel:${p.tel}`} class="flex items-center gap-3 font-semibold text-wood-800 transition hover:text-wood-600">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-wood-100">☎</span>
+                  {p.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href={waLink()} target="_blank" rel="noopener" class="flex items-center gap-3 font-semibold text-moss-600 transition hover:text-moss-500">
+              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-moss-500/10">💬</span>
+              Chat WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href={`tel:${site.englishPhone.tel}`} class="flex items-center gap-3 text-sm font-medium text-wood-700 transition hover:text-wood-900">
+              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-wood-100">🌐</span>
+              English speaker: {site.englishPhone.label}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal rounded-2xl border border-wood-100 bg-white p-6 shadow-sm">
+        <h3 class="mb-4 text-lg font-bold text-wood-900">Lokasi Kami</h3>
+        <div class="space-y-4">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-wood-400">{site.office.label}</p>
+            <p class="mt-0.5 text-sm leading-relaxed text-wood-700">{site.office.address}</p>
+            <a href={site.office.mapUrl} target="_blank" rel="noopener" class="mt-1 inline-block text-sm font-semibold text-wood-800 underline underline-offset-4">Lihat di Google Maps →</a>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-wood-400">{site.workshop.label}</p>
+            <p class="mt-0.5 text-sm leading-relaxed text-wood-700">{site.workshop.address}</p>
+            <a href={site.workshop.mapUrl} target="_blank" rel="noopener" class="mt-1 inline-block text-sm font-semibold text-wood-800 underline underline-offset-4">Lihat di Google Maps →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maps + FAQ -->
+    <div class="space-y-6 lg:col-span-3">
+      <div class="reveal overflow-hidden rounded-2xl border border-wood-100 shadow-sm">
+        <iframe
+          title="Peta lokasi kantor Serang, Banten"
+          src={`https://www.google.com/maps?q=${site.workshop.embedQuery}&output=embed`}
+          width="100%"
+          height="320"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="reveal space-y-3">
+        <h3 class="text-lg font-bold text-wood-900">Pertanyaan Umum</h3>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-xl border border-wood-100 bg-white open:shadow-md">
+              <summary class="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-semibold text-wood-800 [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="ml-3 shrink-0 text-wood-400 transition group-open:rotate-45">＋</span>
+              </summary>
+              <p class="px-5 pb-4 text-sm leading-relaxed text-wood-600">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

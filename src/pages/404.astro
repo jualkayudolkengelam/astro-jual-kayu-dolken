@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title="Halaman Tidak Ditemukan — Kayu Dolken Gelam">
+  <section class="flex flex-col items-center justify-center px-4 py-24 text-center">
+    <p class="text-7xl font-black text-wood-200">404</p>
+    <h1 class="mt-4 text-2xl font-extrabold text-wood-900">Halaman tidak ditemukan</h1>
+    <p class="mt-2 max-w-md text-wood-600">
+      Mungkin tautannya salah. Tidak apa-apa — yang penting Anda sudah menemukan penjual kayu dolken yang tepat!
+    </p>
+    <div class="mt-6 flex gap-3">
+      <a href="/" class="rounded-xl bg-wood-800 px-5 py-3 font-semibold text-white transition hover:bg-wood-700">Kembali ke Beranda</a>
+      <a href={`tel:${site.phones[0].tel}`} class="rounded-xl bg-moss-500 px-5 py-3 font-semibold text-white transition hover:bg-moss-600">Telepon {site.phones[0].label}</a>
+    </div>
+  </section>
+</Base>

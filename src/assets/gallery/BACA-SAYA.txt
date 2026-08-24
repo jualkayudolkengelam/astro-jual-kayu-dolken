@@ -1,0 +1,2 @@
+Letakkan foto produk/workshop di folder ini (jpg/jpeg/png/webp).
+Galeri situs akan terisi otomatis.

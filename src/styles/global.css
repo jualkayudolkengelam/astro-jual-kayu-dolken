@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --color-wood-50: #faf6f0;
+  --color-wood-100: #f3ead9;
+  --color-wood-200: #e7d4b4;
+  --color-wood-300: #d9b987;
+  --color-wood-400: #c99a5f;
+  --color-wood-500: #b98044;
+  --color-wood-600: #a06837;
+  --color-wood-700: #7f502e;
+  --color-wood-800: #593a23;
+  --color-wood-900: #38251a;
+  --color-wood-950: #221409;
+
+  --color-moss-500: #16a34a;
+  --color-moss-600: #15803d;
+
+  --animate-fade-up: fade-up 0.7s ease-out both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-wood-50 text-wood-950 antialiased;
+}
+
+.reveal {
+  animation: var(--animate-fade-up);
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
+}
