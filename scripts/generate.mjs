@@ -58,6 +58,26 @@ FAKTA SATU-SATUNYA yang boleh disebut (jangan tambah apapun):
 function promptUntuk(file, jenis, lama) {
   const data = JSON.parse(readFileSync(file, 'utf8'));
   const isTutorial = file.includes('/tutorial/');
+
+  // --- Tugas konteks lokal (tambah / segarkan) ---
+  if (jenis.startsWith('tambah-konteks:') || jenis === 'segarkan-konteks-terlama') {
+    const tambah = jenis.startsWith('tambah-konteks:');
+    const topik = tambah ? jenis.split(':')[1] : (data.konteks?.[0]?.topik ?? 'ekonomi');
+    const label = { ekonomi:'ekonomi', wisata:'wisata/pariwisata', pendidikan:'pendidikan',
+      infrastruktur:'sarana & infrastruktur', perumahan:'perumahan & properti',
+      proyek:'proyek konstruksi besar', iklim:'iklim & curah hujan', akses:'akses jalan/transportasi' }[topik] ?? topik;
+    const blokLama = tambah ? '(belum ada)' : JSON.stringify(data.konteks?.[0]);
+    return `${ATURAN}
+
+Tugas: tulis SATU blok kecil "${label}" untuk halaman kota.
+Aturan khusus blok:
+- Tepat 2–3 kalimat, tanpa angka statistik apa pun (jumlah penduduk, jumlah sekolah, dsb. dilarang)
+- Hanya fakta umum yang dikenal luas tentang kotanya — DILARANG mengarang detail spesifik
+- Kalimat terakhir WAJIB menghubungkan kondisi itu dengan kebutuhan bangunan/konstruksi/kayu dolken
+${tambah ? '' : `\nBlok lama yang harus diganti isinya (sudut pandang baru):\n${blokLama}\n`}
+Kembalikan JSON persis: {"teks":"isi blok"}`;
+  }
+
   if (isTutorial) {
     return `${ATURAN}
 
@@ -139,10 +159,26 @@ async function panggilLLM(prompt) {
 const KLAIM_TERLARANG =
   /(anti[-\s]?(jamur|rayap)|pelapis|lapisan|cicilan|angsur|garansi|\b\d+\s*(tahun|thn)\b|pengalaman\s+\d+|memotong|dipotong|sesuai\s+ukuran|custom)/i;
 
-function validasi(teks, isTutorial) {
+function validasi(teks, isTutorial, jenis = '') {
   const mulai = teks.indexOf('{');
   const akhir = teks.lastIndexOf('}');
   const obj = JSON.parse(teks.slice(mulai, akhir + 1));
+
+  // Tugas blok konteks: hanya butuh "teks"
+  if (jenis.startsWith('tambah-konteks:') || jenis === 'segarkan-konteks-terlama') {
+    if (typeof obj.teks !== 'string') throw new Error('field teks hilang');
+    const t = obj.teks;
+    if (t.length < 80 || t.length > 600) throw new Error(`panjang blok aneh: ${t.length}`);
+    for (const kata of ['gudang', 'Serang', 'Banten']) {
+      if (t.includes(kata)) throw new Error(`kata terlarang di blok: ${kata}`);
+    }
+    const klaim = KLAIM_TERLARANG.exec(t);
+    if (klaim) throw new Error(`klaim terlarang di blok: "${klaim[0]}"`);
+    const statistik = /\d{3,}/.exec(t);
+    if (statistik) throw new Error(`angka statistik terlarang di blok: "${statistik[0]}"`);
+    return obj;
+  }
+
   if (isTutorial) return obj;
   if (typeof obj.intro !== 'string' || obj.intro.length < 120) throw new Error('intro terlalu pendek');
   for (const kata of ['gudang', 'Serang', 'Banten']) {
@@ -162,19 +198,36 @@ function validasi(teks, isTutorial) {
 let sukses = 0;
 for (const tugas of plan) {
   const isTutorial = tugas.file.includes('/tutorial/');
+  const jenis = tugas.jenis ?? '';
   const lama = readFileSync(tugas.file, 'utf8');
   let hasil = null;
   for (let coba = 1; coba <= 2 && !hasil; coba++) {
     try {
-      const teks = await panggilLLM(promptUntuk(tugas.file, tugas.jenis, lama));
-      hasil = validasi(teks, isTutorial);
+      const teks = await panggilLLM(promptUntuk(tugas.file, jenis, lama));
+      hasil = validasi(teks, isTutorial, jenis);
     } catch (e) {
       console.warn(`Percobaan ${coba} gagal utk ${tugas.file}: ${String(e.message).slice(0, 160)}`);
       if (coba === 2) process.exit(1); // guardrail: gagal = run merah, jangan diam-diam
     }
   }
-  writeFileSync(tugas.file, JSON.stringify(hasil, null, 2) + '\n');
+
+  // Gabungkan hasil sesuai jenis tugas
+  const dataBaru = JSON.parse(lama);
+  if (jenis.startsWith('tambah-konteks:')) {
+    if ((dataBaru.konteks?.length ?? 0) >= 8) throw new Error('blok sudah penuh');
+    dataBaru.konteks.push({ topik: jenis.split(':')[1], teks: hasil.teks });
+  } else if (jenis === 'segarkan-konteks-terlama') {
+    dataBaru.konteks[0].teks = hasil.teks;
+    // pindahkan ke belakang agar urutan "terlama" bergilir
+    dataBaru.konteks.push(dataBaru.konteks.shift());
+  } else {
+    writeFileSync(tugas.file, JSON.stringify(hasil, null, 2) + '\n');
+    sukses++;
+    console.log(`✔ ${tugas.file} (${jenis})`);
+    continue;
+  }
+  writeFileSync(tugas.file, JSON.stringify(dataBaru, null, 2) + '\n');
   sukses++;
-  console.log(`✔ ${tugas.file} (${tugas.jenis})`);
+  console.log(`✔ ${tugas.file} (${jenis})`);
 }
 console.log(`Selesai: ${sukses}/${plan.length} konten diperbarui.`);

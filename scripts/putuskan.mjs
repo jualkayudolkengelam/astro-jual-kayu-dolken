@@ -7,6 +7,7 @@
  */
 import { execSync } from 'node:child_process';
 import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { TOPIK_LOKAL, MAKS_BLOK } from './topik.mjs';
 
 const rnd = (n) => Math.floor(Math.random() * n);
 const pick = (arr) => arr[rnd(arr.length)];
@@ -45,13 +46,37 @@ const jumlah = roll < 0.35 ? 1 : roll < 0.8 ? 2 : 3;
 // Pilih N file dengan commit TERLAMA
 const target = [...age.entries()].sort((a, b) => a[1] - b[1]).slice(0, jumlah);
 
-// Jenis update bergilir acak
+// Jenis update bergilir — untuk kota, diputuskan dari isi file:
+//   konteks < 8 blok → 70% tambah topik yang belum ada; sisanya aksi klasik
+//   konteks penuh    → 60% segarkan blok terlama (indeks 0), sisanya klasik
 const AKSI_KOTA = ['tulis-ulang intro', 'tambah FAQ baru', 'perkaya paragraf lokal'];
 const AKSI_TUTORIAL = ['perluas artikel', 'perbarui bagian usang'];
 
+function aksiKota(file) {
+  let kontens = [];
+  try {
+    kontens = JSON.parse(readFileSync(file, 'utf8')).konteks ?? [];
+  } catch { /* file rusak? perlakukan kosong */ }
+  const topikAda = new Set(kontens.map((b) => b.topik));
+
+  if (kontens.length >= MAKS_BLOK) {
+    return Math.random() < 0.6
+      ? 'segarkan-konteks-terlama'
+      : pick(AKSI_KOTA);
+  }
+  if (Math.random() < 0.7) {
+    const sisa = TOPIK_LOKAL.map((t) => t.id).filter((id) => !topikAda.has(id));
+    if (sisa.length > 0) return `tambah-konteks:${pick(sisa)}`;
+    return 'segarkan-konteks-terlama';
+  }
+  return pick(AKSI_KOTA);
+}
+
 const tasks = target.map(([file]) => ({
   file,
-  jenis: file.includes('/tutorial/') ? pick(AKSI_TUTORIAL) : pick(AKSI_KOTA),
+  jenis: file.includes('/tutorial/')
+    ? pick(AKSI_TUTORIAL)
+    : aksiKota(file),
 }));
 
 // --- 4. Tulis rencana ---

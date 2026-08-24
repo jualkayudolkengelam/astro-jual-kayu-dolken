@@ -19,12 +19,19 @@
 - opencode run tersedia lokal, tapi eksekusi harian resmi = Actions runner
 - Kredensial push GitHub tertanam di remote origin (dipasang pemilik situs)
 
-## A. Fondasi Konten Per-Kota
-1. [ ] Pecah konten kota → src/data/konten-kota/{slug}.json
-       (intro unik + faq[] per kota; template membaca file miliknya;
-       jika file belum ada → fallback intro generik agar kota baru tak blokir)
-2. [ ] dates.js & sitemap lastmod: tanggal per-kota dari git file kontennya
-       → tiap halaman tampil "Terakhir diperbarui" berbeda-beda
+## A. Fondasi Konten Per-Kota ✅ (24 Agu)
+1. [x] Pecah konten kota → src/data/konten-kota/{slug}.json
+2. [x] dates.js & sitemap lastmod per-file git
+
+## A+. Konteks Lokal Bertumbuh ✅ desain disepakati 24 Agu
+- Field baru per kota: "konteks": [{topik, teks}] — maks 8 blok/kota
+- 8 topik bergilir: ekonomi · wisata · pendidikan · infrastruktur ·
+  perumahan · proyek besar · iklim · akses jalan
+- Tiap kunjungan bot tambah SATU blok (2–3 kalimat); penuh 8 →
+  segarkan blok terlama (siklus tak berujung = halaman selalu muda)
+- Pagar relevansi: tiap blok wajib nyambung ke bangunan/konstruksi;
+  DILARANG statistik angka; hanya fakta umum yang terkenal luas
+- Render: seksi "Catatan Kota {Nama}" sebelum FAQ
 
 ## B. Mesin Harian GitHub Actions "Natural"
 1. [ ] scripts/putuskan.mjs — otak keputusan:
