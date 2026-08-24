@@ -16,8 +16,14 @@
   --color-wood-900: #38251a;
   --color-wood-950: #221409;
 
+  --color-moss-50: #dcfce7;
+  --color-moss-100: #bbf7d0;
+  --color-moss-200: #86efac;
+  --color-moss-300: #4ade80;
+  --color-moss-400: #22c55e;
   --color-moss-500: #16a34a;
   --color-moss-600: #15803d;
+  --color-moss-700: #166534;
 
   --animate-fade-up: fade-up 0.7s ease-out both;
 
