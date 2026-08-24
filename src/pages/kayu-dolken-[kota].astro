@@ -16,18 +16,27 @@ interface Props {
 }
 const { city } = Astro.props;
 const neighbors = neighborsOf(city);
+const isSulawesi = city.region.startsWith('Sulawesi');
 const cheapest = products[0].price;
 
 const introVariants = [
-  `Kami melayani pengiriman kayu dolken gelam ke ${city.name} dan sekitarnya langsung dari gudang kami di Serang, Banten. Kayu berasal dari hutan Sumatera dengan legalitas resmi dinas kehutanan — kuat, lurus, dan tahan bertahun-tahun di dalam tanah.`,
-  `Mencari kayu dolken murah di ${city.name}? Kami kirim gratis sampai lokasi Anda dan pembayaran bisa dilakukan setelah barang tiba. Sudah banyak kontraktor dan pemilik rumah di wilayah ${city.region} yang menjadi pelanggan tetap kami.`,
-  `Pesan kayu dolken gelam untuk pondasi cerucuk proyek Anda di ${city.name} sekarang. Stok selalu tersedia dalam empat ukuran diameter, siap diantar oleh armada kami tanpa biaya ongkos kirim ke seluruh ${city.region}.`,
+  `Mencari jual kayu dolken terdekat di ${city.name}? Kami melayani pengiriman ke ${city.name} dan sekitarnya. Kayu berasal dari hutan Sumatera dengan legalitas resmi dinas kehutanan — kuat, lurus, dan tahan bertahun-tahun di dalam tanah.`,
+  `Butuh kayu dolken murah di ${city.name}? Telepon saja — harga paling bersaing dan bisa bayar di tempat untuk area layanan kami. Sudah banyak kontraktor dan pemilik rumah di wilayah ${city.region} yang menjadi pelanggan tetap kami.`,
+  `Pesan kayu dolken gelam untuk pondasi cerucuk proyek Anda di ${city.name} sekarang. Stok selalu tersedia dalam empat ukuran diameter — jumlah kecil maupun partai besar, tim kami siap mengatur jadwal kiriman ke lokasi Anda.`,
 ];
 const idx = cities.findIndex((c) => c.slug === city.slug);
-const intro = introVariants[idx % introVariants.length];
+let intro = introVariants[idx % introVariants.length];
+if (isSulawesi) {
+  intro +=
+    ' Harga dan ongkos kirim paling pas dibicarakan langsung lewat telepon atau WhatsApp.';
+}
 
-const title = `Jual Kayu Dolken ${city.name} Murah — Bayar di Tempat, Gratis Ongkir`;
-const description = `Harga kayu dolken gelam ${city.name} mulai ${rupiah(cheapest)}/batang. Diameter 4–12 cm panjang 4 m, bayar setelah barang sampai, gratis ongkos kirim. Telepon ${site.phones[0].label}.`;
+const title = isSulawesi
+  ? `Jual Kayu Dolken ${city.name} — Melayani Kirim, Harga Bisa Nego`
+  : `Jual Kayu Dolken ${city.name} Terdekat Murah — Bayar di Tempat`;
+const description = isSulawesi
+  ? `Melayani pengiriman kayu dolken gelam ke ${city.name}. Diameter 4–12 cm panjang 4 m dari hutan Sumatera. Hubungi ${site.phones[0].label} untuk harga & penawaran terbaik.`
+  : `Jual kayu dolken terdekat di ${city.name}, mulai ${rupiah(cheapest)}/batang. Diameter 4–12 cm panjang 4 m, bayar setelah barang sampai, gratis ongkos kirim. Telepon ${site.phones[0].label}.`;
 ---
 
 <Base title={title} description={description}>
@@ -45,14 +54,14 @@ const description = `Harga kayu dolken gelam ${city.name} mulai ${rupiah(cheapes
         <span class="text-wood-100">Kayu Dolken {city.name}</span>
       </nav>
       <h1 class="reveal max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl">
-        Jual Kayu Dolken Gelam <span class="text-wood-300">{city.name}</span> Murah
+        Jual Kayu Dolken Gelam <span class="text-wood-300">{city.name}</span> Terdekat
       </h1>
       <p class="reveal mt-4 max-w-2xl leading-relaxed text-wood-100/90">
         {intro}
       </p>
       <div class="reveal mt-7 flex flex-wrap gap-3">
         <a href={`tel:${site.phones[0].tel}`} class="inline-flex items-center gap-2 rounded-xl bg-wood-100 px-5 py-3 font-bold text-wood-900 shadow-lg transition hover:bg-white hover:-translate-y-0.5">
-          ☎ Telepon {site.phones[0].label}
+          ☎ {isSulawesi ? 'Telepon — Nego Langsung' : `Telepon ${site.phones[0].label}`}
         </a>
         <a
           href={waLink(`Halo, saya dari ${city.name} mau pesan kayu dolken gelam. Mohon info harga & jadwal pengirimannya.`)}
@@ -71,8 +80,19 @@ const description = `Harga kayu dolken gelam ${city.name} mulai ${rupiah(cheapes
     <div class="mx-auto grid max-w-6xl grid-cols-2 divide-wood-100 px-4 py-6 text-center sm:grid-cols-4 sm:divide-x">
       <div class="px-2"><p class="text-xl font-extrabold text-wood-800">Rp15rb+</p><p class="text-xs font-medium text-wood-500">per batang</p></div>
       <div class="px-2"><p class="text-xl font-extrabold text-wood-800">Ø 4–12 cm</p><p class="text-xs font-medium text-wood-500">4 ukuran</p></div>
-      <div class="px-2"><p class="text-xl font-extrabold text-moss-600">GRATIS</p><p class="text-xs font-medium text-wood-500">ongkos kirim</p></div>
-      <div class="px-2"><p class="text-xl font-extrabold text-wood-800">COD</p><p class="text-xs font-medium text-wood-500">bayar ditempat</p></div>
+      {
+        isSulawesi ? (
+          <>
+            <div class="px-2"><p class="text-xl font-extrabold text-moss-600">FLEKSIBEL</p><p class="text-xs font-medium text-wood-500">harga &amp; ongkir nego</p></div>
+            <div class="px-2"><p class="text-xl font-extrabold text-wood-800">NEGO</p><p class="text-xs font-medium text-wood-500">langsung di telepon</p></div>
+          </>
+        ) : (
+          <>
+            <div class="px-2"><p class="text-xl font-extrabold text-moss-600">GRATIS</p><p class="text-xs font-medium text-wood-500">ongkos kirim</p></div>
+            <div class="px-2"><p class="text-xl font-extrabold text-wood-800">COD</p><p class="text-xs font-medium text-wood-500">bayar ditempat</p></div>
+          </>
+        )
+      }
     </div>
   </section>
 
@@ -86,14 +106,13 @@ const description = `Harga kayu dolken gelam ${city.name} mulai ${rupiah(cheapes
       </h2>
       <div class="reveal space-y-3 leading-relaxed text-wood-600">
         <p>
-          Wilayah {city.name} termasuk area layanan rutin kami di {city.region}. Armada berangkat
-          dari workshop di Jl. Raya Banten KM 7, Kasemen, Kota Serang — sehingga barang yang Anda terima
-          segar dari stok gudang, bukan stok penumpang yang sudah lama menunggu.
+          Wilayah {city.name} termasuk area layanan rutin kami di {city.region}. Armada kami
+          terbiasa menjangkau berbagai rute, sehingga pesanan Anda bisa dijadwalkan dengan cepat —
+          cukup telepon atau WhatsApp, sebutkan jumlah batang dan diameter yang dibutuhkan.
         </p>
         <p>
           Untuk order perusahaan (Persero) di {city.name}, kami menerima sistem pembayaran penagihan atau invoice.
-          Cukup telepon atau WhatsApp nomor di atas, sebutkan jumlah batang dan diameter yang dibutuhkan,
-          tim kami akan memberikan jadwal kiriman terdekat beserta total biayanya.
+          Detail harga, jumlah, dan waktu pengiriman dibicarakan langsung agar Anda mendapat penawaran paling pas.
         </p>
       </div>
 
@@ -137,9 +156,13 @@ const description = `Harga kayu dolken gelam ${city.name} mulai ${rupiah(cheapes
                 class="aspect-[4/3] w-full object-cover"
               />
               <figcaption class="bg-white px-4 py-3 text-sm leading-relaxed text-wood-600">
-                {n === 1
-                  ? `Kayu dolken gelam ditata sebelum diantar gratis ke lokasi pelanggan di ${city.name} dan sekitarnya.`
-                  : `Proses serah terima kayu dolken — barang tiba di ${city.name}, pembayaran baru dilakukan di tempat.`}
+                {isSulawesi
+                  ? n === 1
+                    ? `Kayu dolken gelam disiapkan untuk pengiriman ke pelanggan di ${city.name} — hubungi kami untuk penawaran terbaik.`
+                    : `Serah terima kayu dolken yang rapi — detail harga dan pengiriman ke ${city.name} bisa langsung dinegosiasikan via telepon.`
+                  : n === 1
+                    ? `Kayu dolken gelam ditata sebelum diantar gratis ke lokasi pelanggan di ${city.name} dan sekitarnya.`
+                    : `Proses serah terima kayu dolken — barang tiba di ${city.name}, pembayaran baru dilakukan di tempat.`}
               </figcaption>
             </figure>
           ))}

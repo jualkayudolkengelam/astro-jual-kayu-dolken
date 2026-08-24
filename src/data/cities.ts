@@ -10,13 +10,16 @@ export type Region =
   | 'Jawa Barat'
   | 'Jawa Tengah'
   | 'DI Yogyakarta'
-  | 'Jawa Timur';
+  | 'Jawa Timur'
+  | 'Sulawesi Selatan'
+  | 'Sulawesi Tengah'
+  | 'Sulawesi Tenggara';
 
 export const regions: { name: Region; blurb: string }[] = [
   {
     name: 'Banten',
     blurb:
-      'Basis kami di Kota Serang — pengiriman paling cepat ke seluruh wilayah Banten, sering bisa sampai di hari yang sama.',
+      'Pengiriman paling sigap ke seluruh wilayah Banten — order pagi sering bisa tiba di hari yang sama.',
   },
   {
     name: 'Jakarta & Sekitarnya',
@@ -42,6 +45,21 @@ export const regions: { name: Region; blurb: string }[] = [
     name: 'Jawa Timur',
     blurb:
       'Sampai Surabaya untuk order dalam jumlah besar — hubungi kami untuk jadwal kiriman terdekat.',
+  },
+  {
+    name: 'Sulawesi Selatan',
+    blurb:
+      'Melayani Makassar dan kota-kota Sulawesi Selatan lainnya — hubungi kami untuk harga & jadwal kiriman terbaik.',
+  },
+  {
+    name: 'Sulawesi Tengah',
+    blurb:
+      'Palu, Luwuk, Poso, dan sekitarnya masuk jadwal kiriman kami — detail ongkos kirim dibicarakan langsung.',
+  },
+  {
+    name: 'Sulawesi Tenggara',
+    blurb:
+      'Kendari, Bau-Bau, dan sekitarnya — telepon atau WhatsApp untuk penawaran kayu dolken paling pas.',
   },
 ];
 
@@ -119,6 +137,26 @@ const raw: [string, Region][] = [
   ['Yogyakarta', 'DI Yogyakarta'],
   // Jawa Timur
   ['Surabaya', 'Jawa Timur'],
+  // Sulawesi Selatan
+  ['Makassar', 'Sulawesi Selatan'],
+  ['Parepare', 'Sulawesi Selatan'],
+  ['Palopo', 'Sulawesi Selatan'],
+  ['Gowa', 'Sulawesi Selatan'],
+  ['Maros', 'Sulawesi Selatan'],
+  ['Bone', 'Sulawesi Selatan'],
+  ['Bulukumba', 'Sulawesi Selatan'],
+  // Sulawesi Tengah
+  ['Palu', 'Sulawesi Tengah'],
+  ['Poso', 'Sulawesi Tengah'],
+  ['Donggala', 'Sulawesi Tengah'],
+  ['Luwuk', 'Sulawesi Tengah'],
+  ['Morowali', 'Sulawesi Tengah'],
+  // Sulawesi Tenggara
+  ['Kendari', 'Sulawesi Tenggara'],
+  ['Bau-Bau', 'Sulawesi Tenggara'],
+  ['Kolaka', 'Sulawesi Tenggara'],
+  ['Raha', 'Sulawesi Tenggara'],
+  ['Buton', 'Sulawesi Tenggara'],
 ];
 
 export const cities: City[] = raw.map(([name, region]) => ({
