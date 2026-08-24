@@ -119,6 +119,33 @@ const description = `Harga kayu dolken gelam ${city.name} mulai ${rupiah(cheapes
         </table>
       </div>
 
+      <!-- Foto bongkar muat per kota -->
+      <section aria-label={`Dokumentasi bongkar muat kayu dolken untuk ${city.name}`} class="mt-10">
+        <h2 class="reveal mb-4 text-2xl font-extrabold tracking-tight text-wood-900">
+          Proses Bongkar Muat Kayu Dolken {city.name}
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {[1, 2].map((n) => (
+            <figure class="reveal overflow-hidden rounded-2xl border border-wood-100 shadow-sm">
+              <img
+                src={`/images/kota/${city.slug}/jual-kayu-dolken-${city.slug}-bongkar-muat-0${n}.jpeg`}
+                alt={`Bongkar muat kayu dolken gelam siap antar ke pelanggan di ${city.name} — foto ${n}`}
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[4/3] w-full object-cover"
+              />
+              <figcaption class="bg-white px-4 py-3 text-sm leading-relaxed text-wood-600">
+                {n === 1
+                  ? `Kayu dolken gelam ditata sebelum diantar gratis ke lokasi pelanggan di ${city.name} dan sekitarnya.`
+                  : `Proses serah terima kayu dolken — barang tiba di ${city.name}, pembayaran baru dilakukan di tempat.`}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <aside class="reveal mt-8 rounded-xl border border-wood-200 bg-wood-50 p-5">
         <p class="mb-2 text-sm font-bold text-wood-800">Kota lain di dekat {city.name}:</p>
         <ul class="flex flex-wrap gap-2">
