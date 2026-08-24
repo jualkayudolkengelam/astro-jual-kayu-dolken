@@ -1,11 +1,9 @@
 export const site = {
   name: 'Jual Kayu Dolken Gelam',
-  shortName: 'KayuDolken.lan',
   owner: 'Amirudin Abdul Karim',
   tagline: 'Kayu Dolken Gelam Murah, Bayar di Tempat',
   description:
     'Jual kayu dolken terdekat murah dengan kualitas terbaik dari Sumatera. Diameter 4–12 cm panjang 4 m, cocok untuk pondasi cerucuk & konstruksi. Bayar di tempat, gratis ongkos kirim seluruh Pulau Jawa — melayani juga Sulawesi.',
-  url: 'http://kayudolken.lan',
   phones: [
     { label: '0813-1140-0177', tel: '+6281311400177' },
     { label: '0878-0567-2256', tel: '+6287805672256' },

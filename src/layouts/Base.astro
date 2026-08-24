@@ -13,7 +13,7 @@ interface Props {
 
 const { title, description = site.description } = Astro.props;
 
-const pageUrl = site.url + Astro.url.pathname;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -60,7 +60,7 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={site.url + Astro.url.pathname} />
+    <link rel="canonical" href={pageUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
