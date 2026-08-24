@@ -19,8 +19,16 @@ if (!KEY || KEY.trim() === '') {
 
 const plan = JSON.parse(readFileSync('.scheduler-plan.json', 'utf8'));
 const PROVIDER = process.env.AI_PROVIDER || 'openai';
-const MODEL =
-  process.env.AI_MODEL || (PROVIDER === 'anthropic' ? 'claude-3-5-haiku-latest' : 'gpt-4o-mini');
+// Bisa satu model atau beberapa dipisah koma → dicoba berurutan bila gagal/rate-limit.
+const MODELS = (
+  process.env.AI_MODEL ||
+  (PROVIDER === 'anthropic' ? 'claude-3-5-haiku-latest' : 'gpt-4o-mini')
+)
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const ATURAN = `
 KAMU PENULIS KONTEN TOKO "Jual Kayu Dolken Gelam" (pemilik: Amirudin Abdul Karim).
@@ -56,7 +64,7 @@ Kembalikan JSON skema persis:
 Syarat FAQ: 2-4 item; minimal satu FAQ BENAR-BENAR BARU (tidak ada di daftar lama).`;
 }
 
-async function panggilLLM(prompt) {
+async function panggilSatu(model, prompt) {
   if (PROVIDER === 'anthropic') {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -66,7 +74,7 @@ async function panggilLLM(prompt) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        model: MODEL,
+        model,
         max_tokens: 1500,
         messages: [{ role: 'user', content: prompt }],
       }),
@@ -75,13 +83,13 @@ async function panggilLLM(prompt) {
     const json = await res.json();
     return json.content[0].text;
   }
-  // default: kompatibel OpenAI (OpenAI, OpenRouter, Groq, dll.)
+  // default: kompatibel OpenAI (OpenRouter, OpenAI, Groq, dll.)
   const base = process.env.AI_BASE_URL || 'https://api.openai.com/v1';
   const res = await fetch(`${base}/chat/completions`, {
     method: 'POST',
     headers: { authorization: `Bearer ${KEY}`, 'content-type': 'application/json' },
     body: JSON.stringify({
-      model: MODEL,
+      model,
       messages: [{ role: 'user', content: prompt }],
       temperature: 0.9,
     }),
@@ -89,6 +97,28 @@ async function panggilLLM(prompt) {
   if (!res.ok) throw new Error(`OpenAI ${res.status}: ${await res.text()}`);
   const json = await res.json();
   return json.choices[0].message.content;
+}
+
+/**
+ * Coba tiap model bergiliran; rate-limit (429) → tunggu lalu lanjut.
+ * Kesalahan konfigurasi fatal (401 kunci salah / 402 saldo) langsung dilempar.
+ */
+async function panggilLLM(prompt) {
+  let kesalahanTerakhir;
+  for (const model of MODELS) {
+    for (let coba = 1; coba <= 3; coba++) {
+      try {
+        return await panggilSatu(model, prompt);
+      } catch (e) {
+        kesalahanTerakhir = e;
+        const pesan = String(e.message);
+        if (/401|402/.test(pesan)) throw e; // kunci/saldo — percuma diulang
+        console.warn(`⚠ ${model} percobaan ${coba}: ${pesan.slice(0, 140)}`);
+        if (coba < 3) await sleep(20000 * coba); // 20s, 40s
+      }
+    }
+  }
+  throw kesalahanTerakhir;
 }
 
 function validasi(teks, isTutorial) {
@@ -117,7 +147,7 @@ for (const tugas of plan) {
       const teks = await panggilLLM(promptUntuk(tugas.file, tugas.jenis, lama));
       hasil = validasi(teks, isTutorial);
     } catch (e) {
-      console.warn(`Percobaan ${coba} gagal utk ${tugas.file}: ${e.message}`);
+      console.warn(`Percobaan ${coba} gagal utk ${tugas.file}: ${String(e.message).slice(0, 160)}`);
       if (coba === 2) process.exit(1); // guardrail: gagal = run merah, jangan diam-diam
     }
   }
