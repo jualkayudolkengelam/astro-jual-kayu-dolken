@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "ekonomi",
+      "teks": "Di Kota Bandung, curah hujan cukup deras selama november hingga maret, sehingga struktur bangunan perlu dilindungi dari kelembaban berlebihan. Kayu gelam asli dengan sifatnya yang secara alami menahan air dan jamur menjadi pilihan yang tepat untuk rangka dan penahan dalam kondisi seperti itu."
+    }
+  ]
 }

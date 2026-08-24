@@ -14,5 +14,10 @@
       "a": "Bisa — barang tiba lebih dulu, pembayaran baru dilakukan setelah Anda terima. Untuk order partai besar oleh perusahaan tersedia sistem invoice."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "akses",
+      "teks": "Kota Jakarta memiliki jalan raya utama yang menghubungkan berbagai daerah dengan lancar. Penggunaan transportasi umum seperti bus dan kereta api juga cukup memudahkan perpindahan antar wilayah. Dengan akses jalan yang baik, pengiriman kayu dolken gelam ke lokasi proyek konstruksi bisa tepat waktu dan tanpa hambatan."
+    }
+  ]
 }
