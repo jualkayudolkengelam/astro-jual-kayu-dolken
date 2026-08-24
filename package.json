@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/fix-sitemap-lastmod.mjs",
+    "build": "git fetch --unshallow --quiet 2>/dev/null || true; astro build && node scripts/fix-sitemap-lastmod.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

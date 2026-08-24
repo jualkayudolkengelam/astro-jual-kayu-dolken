@@ -7,8 +7,24 @@ import { execSync } from 'node:child_process';
  * Output schema: ISO 8601 zona WIB (+07:00) apa pun timezone server.
  */
 
-const FALLBACK_ISO = '2026-08-24T00:00:00+07:00';
 const memo = new Map();
+
+/** Tanggal commit HEAD — dipakai bila riwayat git file tak tersedia (mis. shallow clone). */
+function tanggalHead() {
+  if (!memo.has('__head__')) {
+    try {
+      const out = execSync('git show -s --format=%aI HEAD', {
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'ignore'],
+      }).trim();
+      const ms = Date.parse(out);
+      memo.set('__head__', Number.isNaN(ms) ? Date.now() : ms);
+    } catch {
+      memo.set('__head__', Date.now());
+    }
+  }
+  return memo.get('__head__');
+}
 
 function toWibIso(epochMs) {
   const shifted = new Date(epochMs + 7 * 3600 * 1000);
@@ -44,9 +60,10 @@ export function pageDates(relPath) {
 
   const c = gitEpoch(relPath, 'first');
   const u = gitEpoch(relPath, 'last');
+  const cadangan = tanggalHead();
   const result = {
-    created: c ? toWibIso(c) : FALLBACK_ISO,
-    updated: u ? toWibIso(u) : FALLBACK_ISO,
+    created: toWibIso(c ?? cadangan),
+    updated: toWibIso(u ?? cadangan),
   };
   memo.set(relPath, result);
   return result;

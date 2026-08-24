@@ -162,7 +162,7 @@ async function panggilLLM(prompt) {
 const KLAIM_TERLARANG =
   /(anti[-\s]?(jamur|rayap)|pelapis|lapisan|cicilan|angsur|garansi|\b\d+\s*(tahun|thn)\b|pengalaman\s+\d+|memotong|dipotong|sesuai\s+ukuran|custom)/i;
 
-function validasi(teks, isTutorial, jenis = '') {
+function validasi(teks, isTutorial, jenis = '', file = '') {
   const mulai = teks.indexOf('{');
   const akhir = teks.lastIndexOf('}');
   const obj = JSON.parse(teks.slice(mulai, akhir + 1));
@@ -171,8 +171,10 @@ function validasi(teks, isTutorial, jenis = '') {
   if (jenis.startsWith('tambah-konteks:') || jenis === 'segarkan-konteks-terlama') {
     if (typeof obj.teks !== 'string') throw new Error('field teks hilang');
     const t = obj.teks;
-    const kota = file.split('/').pop().replace('.json','').split('-').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
-    if (!t.includes(kota)) throw new Error(`blok tidak menyebut "${kota}"`);
+    const kota = file
+      ? file.split('/').pop().replace('.json', '').split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+      : '';
+    if (kota && !t.includes(kota)) throw new Error(`blok tidak menyebut "${kota}"`);
     if (t.length < 80 || t.length > 600) throw new Error(`panjang blok aneh: ${t.length}`);
     for (const kata of ['gudang', 'Serang', 'Banten']) {
       if (t.includes(kata)) throw new Error(`kata terlarang di blok: ${kata}`);
@@ -209,7 +211,7 @@ for (const tugas of plan) {
   for (let coba = 1; coba <= 2 && !hasil; coba++) {
     try {
       const teks = await panggilLLM(promptUntuk(tugas.file, jenis, lama));
-      hasil = validasi(teks, isTutorial, jenis);
+      hasil = validasi(teks, isTutorial, jenis, tugas.file);
     } catch (e) {
       console.warn(`Percobaan ${coba} gagal utk ${tugas.file}: ${String(e.message).slice(0, 160)}`);
       if (coba === 2) process.exit(1); // guardrail: gagal = run merah, jangan diam-diam
