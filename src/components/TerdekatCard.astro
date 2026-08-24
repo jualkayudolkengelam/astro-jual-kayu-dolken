@@ -1,0 +1,53 @@
+---
+import type { City } from '../data/cities';
+import { site, waLink } from '../data/site';
+
+interface Props {
+  city: City;
+}
+const { city } = Astro.props;
+const isSulawesi = city.region.startsWith('Sulawesi');
+---
+
+<section
+  aria-label="Kontak cepat kayu dolken terdekat"
+  class="bg-gradient-to-br from-moss-600 to-moss-700 py-12 text-white"
+>
+  <div class="reveal mx-auto max-w-4xl px-4 text-center">
+    <p class="text-sm font-bold uppercase tracking-widest text-moss-200">
+      Layanan Terdekat Anda
+    </p>
+    <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
+      Butuh Jual Kayu Dolken Terdekat? Siap Kirim ke {city.name}
+    </h2>
+    <p class="mx-auto mt-3 max-w-xl leading-relaxed text-white/85">
+      Satu telepon, pesanan langsung masuk jadwal pengiriman ke lokasi Anda —
+      jumlah sedikit maupun partai besar.{isSulawesi
+        ? ' Harga & ongkir dibicarakan langsung, paling pas untuk proyek Anda.'
+        : ' Gratis ongkos kirim dan bayar setelah barang tiba.'}
+    </p>
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a
+        href={`tel:${site.phones[0].tel}`}
+        class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-bold text-moss-700 shadow-lg transition hover:-translate-y-0.5 hover:bg-moss-50"
+      >
+        ☎ {site.phones[0].label}
+      </a>
+      <a
+        href={waLink(`Halo, saya dari ${city.name} mau pesan kayu dolken gelam.`)}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 rounded-xl bg-wood-900 px-5 py-3 font-bold text-white shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-wood-800"
+      >
+        💬 WhatsApp Sekarang
+      </a>
+    </div>
+    <p class="mt-5 text-sm text-white/80">
+      Lihat seluruh area layanan di halaman
+      <a
+        href="/jual-kayu-dolken-terdekat/"
+        class="font-bold underline decoration-moss-300 underline-offset-2 transition hover:text-moss-100"
+      >Jual Kayu Dolken Terdekat</a>.
+    </p>
+  </div>
+</section>

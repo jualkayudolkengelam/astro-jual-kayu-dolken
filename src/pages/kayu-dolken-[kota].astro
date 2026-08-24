@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Pricing from '../components/Pricing.astro';
+import TerdekatCard from '../components/TerdekatCard.astro';
 import { cities, neighborsOf, type City } from '../data/cities';
 import { site, waLink, rupiah, products } from '../data/site';
 import { cityDates, formatTanggalId } from '../lib/dates.js';
@@ -33,8 +34,8 @@ if (isSulawesi) {
 }
 
 const title = isSulawesi
-  ? `Jual Kayu Dolken ${city.name} — Melayani Kirim, Harga Bisa Nego`
-  : `Jual Kayu Dolken ${city.name} Terdekat Murah — Bayar di Tempat`;
+  ? `Jual Kayu Dolken di ${city.name} — Melayani Kirim, Harga Bisa Nego`
+  : `Jual Kayu Dolken Murah & Terdekat di ${city.name} — COD`;
 const description = isSulawesi
   ? `Melayani pengiriman kayu dolken gelam ke ${city.name}. Diameter 4–12 cm panjang 4 m dari hutan Sumatera. Hubungi ${site.phones[0].label} untuk harga & penawaran terbaik.`
   : `Jual kayu dolken terdekat di ${city.name}, mulai ${rupiah(cheapest)}/batang. Diameter 4–12 cm panjang 4 m, bayar setelah barang sampai, gratis ongkos kirim. Telepon ${site.phones[0].label}.`;
@@ -55,7 +56,7 @@ const description = isSulawesi
         <span class="text-wood-100">Kayu Dolken {city.name}</span>
       </nav>
       <h1 class="reveal max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl">
-        Jual Kayu Dolken Gelam <span class="text-wood-300">{city.name}</span> Terdekat
+        Jual Kayu Dolken Gelam Terdekat di <span class="text-wood-300">{city.name}</span>
       </h1>
       <p class="reveal mt-4 max-w-2xl leading-relaxed text-wood-100/90">
         {intro}
@@ -187,4 +188,6 @@ const description = isSulawesi
       </aside>
     </div>
   </section>
+
+  <TerdekatCard city={city} />
 </Base>
