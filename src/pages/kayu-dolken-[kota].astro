@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Pricing from '../components/Pricing.astro';
 import { cities, neighborsOf, type City } from '../data/cities';
 import { site, waLink, rupiah, products } from '../data/site';
+import { cityDates, formatTanggalId } from '../lib/dates.js';
 
 export function getStaticPaths() {
   return cities.map((city) => ({
@@ -39,7 +40,7 @@ const description = isSulawesi
   : `Jual kayu dolken terdekat di ${city.name}, mulai ${rupiah(cheapest)}/batang. Diameter 4–12 cm panjang 4 m, bayar setelah barang sampai, gratis ongkos kirim. Telepon ${site.phones[0].label}.`;
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} dateCreated={cityDates.created} dateUpdated={cityDates.updated}>
   <!-- Hero mini -->
   <section class="relative overflow-hidden bg-wood-900 text-white">
     <div
@@ -58,6 +59,9 @@ const description = isSulawesi
       </h1>
       <p class="reveal mt-4 max-w-2xl leading-relaxed text-wood-100/90">
         {intro}
+      </p>
+      <p class="reveal mt-3 text-xs font-medium text-wood-400">
+        Terakhir diperbarui: {formatTanggalId(cityDates.updated)}
       </p>
       <div class="reveal mt-7 flex flex-wrap gap-3">
         <a href={`tel:${site.phones[0].tel}`} class="inline-flex items-center gap-2 rounded-xl bg-wood-100 px-5 py-3 font-bold text-wood-900 shadow-lg transition hover:bg-white hover:-translate-y-0.5">

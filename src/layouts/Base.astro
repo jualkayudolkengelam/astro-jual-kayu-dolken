@@ -7,29 +7,48 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  dateCreated?: string;
+  dateUpdated?: string;
 }
 
 const { title, description = site.description } = Astro.props;
 
+const pageUrl = site.url + Astro.url.pathname;
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: site.name,
-  description: site.description,
-  url: site.url + Astro.url.pathname,
-  telephone: site.phones.map((p) => p.tel),
-  founder: { '@type': 'Person', name: site.owner },
-  priceRange: 'Rp15.000 - Rp45.000',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.office.address,
-    addressLocality: 'Kota Serang',
-    addressRegion: 'Banten',
-    postalCode: '42191',
-    addressCountry: 'ID',
-  },
-  geo: { '@type': 'GeoCoordinates', latitude: -6.1264, longitude: 106.1505 },
-  openingHours: 'Mo-Sa 08:00-17:00',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: site.name,
+      description: site.description,
+      url: pageUrl,
+      telephone: site.phones.map((p) => p.tel),
+      founder: { '@type': 'Person', name: site.owner },
+      priceRange: 'Rp15.000 - Rp45.000',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: site.office.address,
+        addressLocality: 'Kota Serang',
+        addressRegion: 'Banten',
+        postalCode: '42191',
+        addressCountry: 'ID',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: -6.1264, longitude: 106.1505 },
+      openingHours: 'Mo-Sa 08:00-17:00',
+    },
+    {
+      '@type': 'BlogPosting',
+      headline: title,
+      description: description,
+      url: pageUrl,
+      inLanguage: 'id-ID',
+      mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+      author: { '@type': 'Person', name: site.owner },
+      publisher: { '@type': 'Organization', name: site.name },
+      ...(Astro.props.dateCreated ? { datePublished: Astro.props.dateCreated } : {}),
+      ...(Astro.props.dateUpdated ? { dateModified: Astro.props.dateUpdated } : {}),
+    },
+  ],
 };
 ---
 

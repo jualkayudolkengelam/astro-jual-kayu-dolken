@@ -8,10 +8,18 @@ import Gallery from '../components/Gallery.astro';
 import Coverage from '../components/Coverage.astro';
 import Contact from '../components/Contact.astro';
 import { site } from '../data/site';
+import { homeDates, formatTanggalId } from '../lib/dates.js';
 ---
 
-<Base title={`${site.name} — Jual Kayu Dolken Terdekat Murah, Bayar di Tempat`}>
+<Base
+  title={`${site.name} — Jual Kayu Dolken Terdekat Murah, Bayar di Tempat`}
+  dateCreated={homeDates.created}
+  dateUpdated={homeDates.updated}
+>
   <Hero />
+  <p class="py-4 text-center text-xs font-medium text-wood-400">
+    Terakhir diperbarui: {formatTanggalId(homeDates.updated)}
+  </p>
   <Pricing />
   <Features />
   <About />
