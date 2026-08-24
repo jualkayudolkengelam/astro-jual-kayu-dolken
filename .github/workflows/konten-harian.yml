@@ -1,0 +1,64 @@
+name: Konten Harian Natural
+
+on:
+  schedule:
+    # Tiap jam :03 UTC = 08:03–20:03 WIB. Script sendiri memutuskan
+    # libur acak / jumlah item — bukan tiap pemicu menghasilkan konten.
+    - cron: '3 1-13 * * *'
+  workflow_dispatch: {} # tombol uji manual di tab Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: konten-harian
+  cancel-in-progress: false
+
+jobs:
+  harian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # tanggal halaman membaca riwayat git file konten
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - id: putuskan
+        run: node scripts/putuskan.mjs
+
+      - name: Lewati (hari libur acak)
+        if: steps.putuskan.outputs.tasks == '0'
+        run: echo "Tidak ada update hari ini — wajar untuk pola natural."
+
+      - name: Generate konten (AI)
+        if: steps.putuskan.outputs.tasks != '0'
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_PROVIDER: ${{ vars.AI_PROVIDER }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          AI_BASE_URL: ${{ vars.AI_BASE_URL }}
+        run: node scripts/generate.mjs
+
+      - name: Build verifikasi (wajib lulus)
+        if: steps.putuskan.outputs.tasks != '0'
+        run: npm run build
+
+      - name: Commit & push
+        if: steps.putuskan.outputs.tasks != '0'
+        run: |
+          git config user.name "bot-dolken"
+          git config user.email "bot-dolken@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan."
+            exit 0
+          fi
+          git commit -m "Konten harian: $(cat .scheduler-plan.txt)"
+          git push

@@ -5,3 +5,7 @@ npm-debug.log*
 .DS_Store
 .env
 .env.*
+
+.scheduler-plan.json
+.scheduler-plan.txt
+.env
