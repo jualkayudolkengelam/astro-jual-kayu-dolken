@@ -5,9 +5,10 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { homeDates, cityDates } from '../src/lib/dates.js';
+import { SITE_URL } from '../src/lib/site-url.js';
 
 const FILE = 'dist/sitemap-0.xml';
-const SITE = process.env.PUBLIC_SITE_URL ?? 'http://kayudolken.lan';
+const SITE = SITE_URL;
 
 let xml = readFileSync(FILE, 'utf8');
 xml = xml.replace(/<url>(.*?)<\/url>/gs, (block, inner) => {

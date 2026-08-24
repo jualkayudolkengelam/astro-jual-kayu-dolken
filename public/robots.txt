@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: http://kayudolken.lan/sitemap-index.xml
