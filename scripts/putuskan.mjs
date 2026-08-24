@@ -32,8 +32,10 @@ const age = new Map(files.map((f) => {
 }));
 
 // --- 3. Keputusan natural hari ini ---
+const undianLibur = Math.random();
+console.log(`(audit) undian libur = ${undianLibur.toFixed(4)} · ambang 0.12`);
 // Libur acak ±12%
-if (Math.random() < 0.12) {
+if (undianLibur < 0.12) {
   console.log('Keputusan: hari ini LIBUR acak (pola natural).');
   console.log('tasks=0');
   process.exit(0);
