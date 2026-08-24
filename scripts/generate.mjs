@@ -66,13 +66,16 @@ function promptUntuk(file, jenis, lama) {
     const label = { ekonomi:'ekonomi', wisata:'wisata/pariwisata', pendidikan:'pendidikan',
       infrastruktur:'sarana & infrastruktur', perumahan:'perumahan & properti',
       proyek:'proyek konstruksi besar', iklim:'iklim & curah hujan', akses:'akses jalan/transportasi' }[topik] ?? topik;
+    const kota = file.split('/').pop().replace('.json','').split('-').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
     const blokLama = tambah ? '(belum ada)' : JSON.stringify(data.konteks?.[0]);
     return `${ATURAN}
 
-Tugas: tulis SATU blok kecil "${label}" untuk halaman kota.
+Tugas: tulis SATU blok kecil "${label}" untuk halaman kota **${kota}**.
 Aturan khusus blok:
+- WAJIB menyebut kata "${kota}" tepat satu kali — DILARANG menyebut nama kota lain
+- Isi HARUS membahas topik ${label} saja (jangan melenceng ke topik lain)
 - Tepat 2–3 kalimat, tanpa angka statistik apa pun (jumlah penduduk, jumlah sekolah, dsb. dilarang)
-- Hanya fakta umum yang dikenal luas tentang kotanya — DILARANG mengarang detail spesifik
+- Hanya fakta umum yang dikenal luas tentang ${kota} — DILARANG mengarang detail spesifik
 - Kalimat terakhir WAJIB menghubungkan kondisi itu dengan kebutuhan bangunan/konstruksi/kayu dolken
 ${tambah ? '' : `\nBlok lama yang harus diganti isinya (sudut pandang baru):\n${blokLama}\n`}
 Kembalikan JSON persis: {"teks":"isi blok"}`;
@@ -168,6 +171,8 @@ function validasi(teks, isTutorial, jenis = '') {
   if (jenis.startsWith('tambah-konteks:') || jenis === 'segarkan-konteks-terlama') {
     if (typeof obj.teks !== 'string') throw new Error('field teks hilang');
     const t = obj.teks;
+    const kota = file.split('/').pop().replace('.json','').split('-').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+    if (!t.includes(kota)) throw new Error(`blok tidak menyebut "${kota}"`);
     if (t.length < 80 || t.length > 600) throw new Error(`panjang blok aneh: ${t.length}`);
     for (const kata of ['gudang', 'Serang', 'Banten']) {
       if (t.includes(kata)) throw new Error(`kata terlarang di blok: ${kata}`);
