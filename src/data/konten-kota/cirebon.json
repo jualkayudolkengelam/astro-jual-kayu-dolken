@@ -1,14 +1,17 @@
 {
-  "intro": "Butuh kayu dolken murah di Cirebon? Telepon saja — harga paling bersaing dan bisa bayar di tempat untuk area layanan kami. Sudah banyak kontraktor dan pemilik rumah di wilayah Jawa Barat yang menjadi pelanggan tetap kami.",
+  "intro": "Sedang menggarap proyek bangunan di Cirebon tapi khawatir kayu penyangga cepat lapuk karena tanah lembap? Gunakan kayu dolken gelam asli hutan Sumatera yang secara alami tahan air dan jamur karena tumbuh di rawa. Pak Amirudin Abdul Karim siap kirim langsung ke lokasi Anda dengan sistem bayar di tempat agar transaksi lebih tenang dan aman.",
   "faq": [
     {
-      "q": "Apakah kayu dolken bisa dikirim ke Cirebon?",
-      "a": "Bisa. Cirebon termasuk area layanan rutin kami di Jawa Barat. Cukup telepon atau WhatsApp, sebutkan jumlah dan diameternya — jadwal pengiriman langsung kami atur."
+      "q": "Apakah kayu dolken gelam ini cocok untuk lahan yang sering tergenang air di Cirebon?",
+      "a": "Sangat cocok. Karena habitat aslinya adalah rawa, kayu gelam memiliki sifat alami tahan busuk dan jamur, sehingga jauh lebih tangguh dibandingkan kayu biasa saat tertanam di tanah basah atau area lembap."
     },
     {
-      "q": "Bagaimana cara memesan kayu dolken untuk proyek di Cirebon?",
-      "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
+      "q": "Bagaimana prosedur pemesanan dan pembayarannya untuk wilayah Cirebon?",
+      "a": "Anda cukup menghubungi kami melalui telepon atau WhatsApp untuk menentukan diameter (4–12 cm) dan jumlah batang yang dibutuhkan. Kami menerapkan sistem COD, jadi Anda cukup membayar setelah barang tiba di lokasi."
+    },
+    {
+      "q": "Apakah tersedia opsi pembayaran untuk pesanan atas nama perusahaan?",
+      "a": "Ya, bagi pelanggan perusahaan yang memesan untuk kebutuhan proyek, kami menyediakan sistem pembayaran melalui invoice."
     }
-  ],
-  "konteks": []
+  ]
 }
