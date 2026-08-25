@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "perumahan",
+      "teks": "Ciamis sedang melihat pertumbuhan perumahan baru dengan banyak kompleks yang dirancang untuk harmonikan kehidupan urbano dan alam sekitar. Kebutuhan bahan bangunan yang tahan terhadap kelembaban dan perubahan cuaca menjadi pertimbangan penting dalam perencanaan rumah di wilayah ini. Kayu dolken gelam asli Sumatera, dengan ketahanan alami terhadap air dan jamur karena tumbuh di habitat rawa, sangat cocok untuk rangka dan penampilan interior rumah di Ciamis."
+    }
+  ]
 }
