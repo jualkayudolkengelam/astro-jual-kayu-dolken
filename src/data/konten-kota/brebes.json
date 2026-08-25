@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "pendidikan",
+      "teks": "Di Brebes, banyak anak-anak bersekolah di sekolah-sekolah negeri dan swasta yang terus berupaya meningkatkan mutu pembelajaran. Untuk mendukung proses belajar yang efektif, diperlukan ruang belajar yang aman dan nyaman, seperti ruang kelas, perpustakaan, dan area latihan. Dengan kebutuhan bangunan yang kokoh dan tahan lama, kayu dolken gelam menjadi pilihan yang sesuai karena sifatnya yang tahan air dan kukuh."
+    }
+  ]
 }

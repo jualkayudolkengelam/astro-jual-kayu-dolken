@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "proyek",
+      "teks": "Boyolali dikenal sebagai daerah dengan lahan subur yang mendukung aktifitas pertanian dan perkebunan besar. Pada musim hujan, kebutuhan akan material yang tahan terhadap air dan kelembaban meningkat, terutama untuk struktur besar yang terpapar hujan terus-menerus. Kayu gelam asli dari hutan Sumatera, dengan sifat alami tahan air dan busuk karena habitat rawanya, menjadi pilihan yang tepat untuk menahan kondisi tersebut dalam proyek konstruksi besar di Boyolali."
+    }
+  ]
 }
