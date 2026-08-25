@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "iklim",
+      "teks": "Cikarang memiliki iklim tropis dengan curah hujan yang cukup merata sepanjang tahun, terutama pada musim hujan. Kelembaban tinggi dan hujan rutin menuntut bahan bangunan yang tahan terhadap air dan jamur agar struktur tetap awet. Kayu gelam asli Sumatera, yang secara alami tahan terhadap air dan jamur, menjadi pilihan yang sesuai untuk kebutuhan konstruksi di wilayah ini."
+    }
+  ]
 }

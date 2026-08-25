@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "pendidikan",
+      "teks": "Di Cilacap, pendidikan anak-anak selalu mendapat perhatian dengan banyak sekolah yang menunjang pertumbuhan mereka. Lingkungan yang tenang dan suportif membuat para siswa bisa fokus belajar dan mengembangkan potensi. Kebutuhan akan ruang belajar yang nyaman membuat banyak sekolah membutuhkan kayu dolken gelam untuk bangunan kelas dan perpustakaan yang kuat dan tahan lama."
+    }
+  ]
 }
