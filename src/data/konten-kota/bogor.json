@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "infrastruktur",
+      "teks": "Bogor dikenal dengan jalur raya yang terawat dan sistem drainase yang efektif, terutama karena curah hujan yang tinggi di daerah ini. Kondisi lingkungan yang lembap ini menuntut bahan bangunan yang tahan terhadap air dan kelembaban, seperti kayu dolken gelam asli dari hutan Sumatera."
+    }
+  ]
 }
