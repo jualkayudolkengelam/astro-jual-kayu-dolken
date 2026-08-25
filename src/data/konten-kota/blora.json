@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "akses",
+      "teks": "Blora memiliki akses jalan utama yang dilalui oleh jalur lintas Pulau Jawa, sehingga pengangkutan barang bisa dilakukan dengan lancar menggunakan truk besar. Selain itu, jalur kereta api yang melewati wilayah ini memberikan alternatif pengiriman yang handal untuk material berat. Kondisi infrastruktur ini memudahkan pengiriman kayu dolken gelam ke berbagai lokasi konstruksi di sekitarnya."
+    }
+  ]
 }
