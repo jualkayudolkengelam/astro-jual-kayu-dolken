@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "proyek",
+      "teks": "Di Cilegon, proyek konstruksi besar seperti jembatan atau fasilitas pelabuhan membutuhkan kayu yang mampu menghadapi curah hujan lebat tanpa cepat rusak. Kayu gelam asli dari hutan Sumatera, dengan sifat alami tahan air, busuk, dan jamur karena tumbuh di habitat rawa, memberikan keandalan yang diperlukan untuk struktur yang lama. Oleh karena itu, ketika musim hujan tiba dan beban konstruksi meningkat, pilihan kayu dolken menjadi solusi tepat untuk menjaga keawetan dan keamanan bangunan."
+    }
+  ]
 }

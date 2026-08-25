@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "perumahan",
+      "teks": "Ciomas adalah daerah yang subur dengan lahan hijau yang mendukung perkembangan perumahan dan kompleks tinggal. Musim hujan di wilayah ini menambah kebutuhan akan bahan bangunan tahan air seperti kayu dolken gelam, karena sifat alaminya yang tahan air membantu mencegah kerusakan struktur."
+    }
+  ]
 }
