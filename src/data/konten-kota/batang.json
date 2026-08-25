@@ -1,14 +1,17 @@
 {
-  "intro": "Pesan kayu dolken gelam untuk pondasi cerucuk proyek Anda di Batang sekarang. Stok selalu tersedia dalam empat ukuran diameter — jumlah kecil maupun partai besar, tim kami siap mengatur jadwal kiriman ke lokasi Anda.",
+  "intro": "Di Batang, proyek bangunan yang dibangun di musim hujan membutuhkan bahan yang tahan terhadap kelembaban, dan kayu dolken gelam asli Sumatera memenuhi kebutuhan tersebut dengan sifatnya yang alami menahan air dan jamur. Dengan diameter 4–12 cm dan panjang standar 4 meter, kayu ini siap dipasang sebagai pondasi cerucuk atau rangka ringan tanpa perlu perawatan khusus. Harga mulai dari Rp15.000 per batang dan kami mengirimkan gratis ke seluruh Pulau Jawa, termasuk Batang, dengan sistem COD sehingga Anda hanya membayar setelah barang tiba di lokasi.",
   "faq": [
     {
-      "q": "Apakah kayu dolken bisa dikirim ke Batang?",
-      "a": "Bisa. Batang termasuk area layanan rutin kami di Jawa Tengah. Cukup telepon atau WhatsApp, sebutkan jumlah dan diameternya — jadwal pengiriman langsung kami atur."
+      "q": "Apakah ada biaya ongkir gratis ke Pulau Jawa?",
+      "a": "Ya, kami memberikan gratis ongkos kirim ke seluruh Pulau Jawa, termasuk Batang, sesuai kebijakan kami."
     },
     {
-      "q": "Bagaimana cara memesan kayu dolken untuk proyek di Batang?",
-      "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
+      "q": "Bagaimana cara melakukan order perusahaan dengan sistem invoice?",
+      "a": "Untuk order perusahaan, cukup hubungi kami melalui telepon atau WhatsApp, sebutkan jumlah dan spesifikasi kayu, kami akan membuatkan invoice dan mengirimkannya sebelum penyerahan barang."
+    },
+    {
+      "q": "Apakah pembayaran COD berlaku di Batang?",
+      "a": "Ya, sistem COD (bayar di tempat) berlaku untuk pengiriman ke Batang; Anda hanya membayar setelah barang tiba dan diperiksa di lokasi."
     }
-  ],
-  "konteks": []
+  ]
 }
