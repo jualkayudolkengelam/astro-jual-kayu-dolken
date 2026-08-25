@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "iklim",
+      "teks": "Indramayu memiliki iklim tropis dengan curah hujan yang cukup tinggi sepanjang tahun, terutama pada musim hujan. Kelembaban dan hujan deras membuat struktur bangunan rentan terhadap kelembapan dan kerusakan jika tidak menggunakan bahan yang tahan air. Kayu dolken gelam, yang secara natural tahan air dan jamur, menjadi pilihan yang tepat untuk konstruksi di daerah seperti ini."
+    }
+  ]
 }
