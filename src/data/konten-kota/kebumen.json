@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "pendidikan",
+      "teks": "Kebumen dikenal dengan lahan subur dan tradisi kerajinan bambu yang masih dipelihara oleh masyarakatnya. Kehidupan sehari-hari di sana cenderung mengutuhkan bahan bangunan yang kuat dan tahan lama untuk rumah serta bangunan umum. Karena kayu gelam asli dari hutan Sumatera memiliki sifat tahan air dan busuk secara alami, ia menjadi pilihan yang tepat untuk menjawab kebutuhan konstruksi di wilayah Kebumen."
+    }
+  ]
 }

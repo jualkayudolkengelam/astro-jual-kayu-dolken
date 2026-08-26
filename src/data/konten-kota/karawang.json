@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "perumahan",
+      "teks": "Di Karawang, perkembangan perumahan dan kompleks industri terus tumbuh, sehingga memilih bahan bangunan yang tahan terhadap kelembaban menjadi pertimbangan utama, terutama saat musim hujan tiba. Kayu gelam asli dari hutan Sumatera memiliki sifat alami tahan air dan jamur karena tumbuh di habitat rawa, sehingga cocok untuk rangka, pintu, atau lantai rumah tanpa perlu pengolahan kimiawi. Dengan menggunakan kayu dolken gelam ini, hunian di daerah ini bisa lebih awet dan nyaman bahkan ketika hujan deras."
+    }
+  ]
 }
