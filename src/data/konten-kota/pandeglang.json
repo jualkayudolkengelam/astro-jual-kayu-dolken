@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "proyek",
+      "teks": "Kawasan Pandeglang memiliki banyak lahan terbuka yang kini terus dikembangkan menjadi berbagai proyek konstruksi besar. Kondisi tanah yang beragam tentu membutuhkan pondasi yang kuat agar bangunan tetap stabil. Di sinilah kayu dolken gelam menjadi pilihan tepat untuk memperkokoh struktur bangunan Anda."
+    }
+  ]
 }
