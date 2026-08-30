@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "pendidikan",
+      "teks": "Pemalang dikenal dengan wilayahnya yang subur dan masyarakat yang aktif dalam bidang pendidikan. Sekolah-sekolah di Pemalang terus meningkatkan kualitas pembelajaran untuk menyiapkan generasi yang kompeten. Dengan pertumbuhan infrastruktur dan pendidikan, kebutuhan material bangunan yang kuat dan tahan lama seperti kayu dolken semakin terasa."
+    }
+  ]
 }

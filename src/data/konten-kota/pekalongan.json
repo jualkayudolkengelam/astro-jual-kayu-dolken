@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "wisata",
+      "teks": "Pekalongan terkenal dengan pantai berpasir putih dan tradisi batik yang khas, menarik wisatawan yang mencari keindahan budaya dan alam. Kudapan khas seperti dodol dan mangga muda juga menjadi daya tarik kuliner yang membuat kunjungan lebih nikmat. Dalam kondisi udara lembap dan salin pantai ini, kayu dolken gelam dari hutan Sumatera yang secara natural tahan air dan jamur menjadi pilihan ideal untuk bangunan tempat wisata yang membutuhkan ketahanan."
+    }
+  ]
 }
