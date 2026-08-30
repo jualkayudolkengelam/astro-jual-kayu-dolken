@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "infrastruktur",
+      "teks": "Kawasan Petir memiliki karakteristik wilayah yang terus berkembang dengan pembangunan berbagai sarana umum. Kondisi tanah dan lingkungan di sini memerlukan pondasi yang kuat untuk mendukung infrastruktur yang stabil. Hal inilah yang membuat penggunaan kayu dolken menjadi pilihan tepat untuk memperkokoh konstruksi bangunan."
+    }
+  ]
 }
