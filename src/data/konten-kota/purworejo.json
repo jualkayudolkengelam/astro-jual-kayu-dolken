@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "infrastruktur",
+      "teks": "Purworejo memiliki jalur raya yang menghubungkan berbagai kabupaten di Jawa Tengah, sehingga akses ke lokasi proyek konstruksi cukup lancar. Wilayah ini juga dilengkapi dengan jembatan beton yang kuat dan drainage yang baik, mendukung pengangkutan bahan bangunan tanpa hambatan. Dengan kondisi infrastruktur seperti ini, kebutuhan kayu dolken Gelam untuk rangka dan penahan air menjadi lebih mudah dipenuhi."
+    }
+  ]
 }
