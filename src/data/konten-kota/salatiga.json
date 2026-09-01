@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "akses",
+      "teks": "Salatiga terletak di jalur lintas utama yang menghubungkan wilayah sekitar, dengan jalan raya yang cukup lebar dan kondisi baik. Kondisi ini memudahkan pengangkutan material konstruksi seperti kayu dolken ke lokasi proyek tanpa hambatan signifikan. Dengan akses yang lancar, kebutuhan kayu untuk bangunan dapat dipenuhi tepat waktu."
+    }
+  ]
 }

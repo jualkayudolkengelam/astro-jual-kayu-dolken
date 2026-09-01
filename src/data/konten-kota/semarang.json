@@ -1,5 +1,5 @@
 {
-  "intro": "Butuh kayu dolken murah di Semarang? Telepon saja — harga paling bersaing dan bisa bayar di tempat untuk area layanan kami. Sudah banyak kontraktor dan pemilik rumah di wilayah Jawa Tengah yang menjadi pelanggan tetap kami.",
+  "intro": "Butuh kayu dolken murah di Semarang? Kami siap melayani pesanan Anda dengan sistem bayar di tempat setelah barang tiba. Kayu gelam asli Sumatera kita tahan air dan jamur, cocok untuk berbagai proyek bangunan di kota ini. Dengan pengiriman gratis ke seluruh Pulau Jawa, Anda bisa fokus pada pekerjaan tanpa biaya tambahan.",
   "faq": [
     {
       "q": "Apakah kayu dolken bisa dikirim ke Semarang?",
@@ -8,7 +8,10 @@
     {
       "q": "Bagaimana cara memesan kayu dolken untuk proyek di Semarang?",
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
+    },
+    {
+      "q": "Apakah ada pertimbangan khusus untuk menggunakan dolken gelam saat musim hujan di Semarang?",
+      "a": "Kayu gelam sudah tahan air dan jamur karena habitat rawa, tetapi dalam musim hujan disarankan menata letak pasangan agar tidak terendam lama dan membiarkan sirkulasi udara baik setelah pemasangan."
     }
-  ],
-  "konteks": []
+  ]
 }
