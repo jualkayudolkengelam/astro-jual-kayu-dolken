@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "wisata",
+      "teks": "Kota Surabaya memiliki beragam destinasi wisata sejarah dan taman kota yang sangat menarik untuk dikunjungi. Keindahan area publik yang tertata rapi tentu membutuhkan perawatan infrastruktur yang kuat agar tetap kokoh. Hal inilah yang membuat kebutuhan akan material konstruksi berkualitas menjadi sangat penting."
+    }
+  ]
 }

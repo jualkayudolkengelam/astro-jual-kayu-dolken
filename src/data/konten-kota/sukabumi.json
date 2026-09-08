@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "infrastruktur",
+      "teks": "Sukabumi memiliki jalan raya yang terhubung ke berbagai tempat wisata dan fasilitas publik yang memudahkan mobilitas masyarakat. Dengan kondisi lingkungan yang sering berujung pada kelembaban tinggi, kayu dolken gelam yang tahan air menjadi pilihan yang tepat untuk bangunan dan konstruksi di daerah itu."
+    }
+  ]
 }
