@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "akses",
+      "teks": "Tegal terletak di jalur utama Pantura yang menghubungkan berbagai kota besar di Jawa Tengah dan Jawa Barat. Kondisi jalan raya yang luas dan adanya stasiun kereta api di kota ini memperlancar distribusi bahan konstruksi seperti kayu dolken ke berbagai tempat proyek."
+    }
+  ]
 }

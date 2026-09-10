@@ -10,5 +10,10 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     }
   ],
-  "konteks": []
+  "konteks": [
+    {
+      "topik": "pendidikan",
+      "teks": "Ungaran memiliki berbagai lembaga pendidikan yang terus tumbuh dan menyediakan tempat belajar bagi anak-anak daerah. Kebutuhan akan bangunan sekolah yang kokoh dan tahan lama membuat kayu dolken gelam menjadi pilihan yang tepat untuk rangka atap dan kolam penetrasi di sekitar kampus."
+    }
+  ]
 }
