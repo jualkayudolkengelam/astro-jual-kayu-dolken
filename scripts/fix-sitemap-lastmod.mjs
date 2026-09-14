@@ -8,7 +8,9 @@ import { homeDates, terdekatDates, cityPageDates } from '../src/lib/dates.js';
 import { SITE_URL } from '../src/lib/site-url.js';
 
 const FILE = 'dist/sitemap-0.xml';
+const FILE_INDEX = 'dist/sitemap-index.xml';
 const SITE = SITE_URL;
+const XSL_PI = '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>';
 
 function lastmodFor(pathname) {
   if (pathname === '/') return homeDates.updated;
@@ -28,5 +30,21 @@ xml = xml.replace(/<url>(.*?)<\/url>/gs, (block, inner) => {
     : `${inner}<lastmod>${lastmod}</lastmod>`;
   return `<url>${newInner}</url>`;
 });
+// Sisipkan XML-stylesheet PI setelah <?xml ...?>
+if (!xml.includes('xml-stylesheet')) {
+  xml = xml.replace(/^<\?xml[^>]*\?>/, (pi) => `${pi}${XSL_PI}`);
+}
 writeFileSync(FILE, xml);
 console.log(`sitemap-0.xml: lastmod disamakan dgn sumber git (${homeDates.updated})`);
+
+// Index sitemap: sisipkan stylesheet juga
+try {
+  let idx = readFileSync(FILE_INDEX, 'utf8');
+  if (!idx.includes('xml-stylesheet')) {
+    idx = idx.replace(/^<\?xml[^>]*\?>/, (pi) => `${pi}${XSL_PI}`);
+  }
+  writeFileSync(FILE_INDEX, idx);
+  console.log('sitemap-index.xml: stylesheet disisipkan');
+} catch (e) {
+  console.warn('sitemap-index.xml tidak ditemukan, dilewati');
+}
