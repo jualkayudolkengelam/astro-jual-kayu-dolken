@@ -1,9 +1,22 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { loadEnv } from 'vite';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { homeDates, terdekatDates, cityPageDates } from './src/lib/dates.js';
-import { SITE_URL } from './src/lib/site-url.js';
+
+// Muat .env eksplisit utk config file — baca LANGSUNG (bukan via import SITE_URL,
+// karena import ES module di-hoist & jalan sebelum kode ini dieksekusi).
+function resolveSiteUrl() {
+  const env = loadEnv('production', process.cwd(), '');
+  const explicit = env.SITE_URL || process.env.SITE_URL;
+  if (explicit) return explicit;
+  if (process.env.VERCEL) return 'https://www.jualdolkenkayu.com';
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return 'https://' + process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  return 'http://192.168.18.17:8088';
+}
+
+const SITE_URL = resolveSiteUrl();
 
 // Pemetaan lastmod per halaman dari sumber git.
 function lastmodFor(pathname) {
@@ -27,3 +40,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 });
+
+
