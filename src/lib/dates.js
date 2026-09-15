@@ -117,3 +117,9 @@ export function kotaTerbaruDates() {
 if (homeDates.updated < kotaTerbaruDates()) {
   homeDates.updated = kotaTerbaruDates();
 }
+
+// terdekatDates.updated = max(updated file halaman, updated homeDates)
+// karena halaman terdekat nampilin blok 4-6 (yang pakai konten kota terbaru).
+if (terdekatDates.updated < homeDates.updated) {
+  terdekatDates.updated = homeDates.updated;
+}
