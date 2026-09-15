@@ -87,3 +87,33 @@ export const terdekatDates = pageDates('src/pages/jual-kayu-dolken-terdekat.astr
 export function cityPageDates(slug) {
   return pageDates(`src/data/konten-kota/${slug}.json`);
 }
+
+/** Tanggal terbaru di antara SEMUA kota — dipakai homepage & terdekat
+ *  supaya lastmod ikut naik saat konten kota diperbarui (SEO fresh). */
+const KOTA_SLUGS = [
+  'anyer','balaraja','bandung','banjarnegara','banyumas','batang','bau-bau','bekasi',
+  'blora','bogor','bone','boyolali','brebes','bulukumba','buton','ciamis','cianjur',
+  'cikarang','cilacap','cilegon','ciomas','cirebon','demak','depok','donggala','garut',
+  'gowa','indramayu','jakarta-barat','jakarta-pusat','jakarta-selatan','jakarta-timur',
+  'jakarta-utara','jepara','karawang','kebumen','kendal','kendari','klaten','kolaka',
+  'kudus','kuningan','lebak','luwuk','magelang','majalengka','makassar','maros','merak',
+  'morowali','palopo','palu','pandeglang','parepare','pati','pekalongan','pemalang',
+  'petir','poso','purbalingga','purwakarta','purwodadi','purwokerto','purworejo','raha',
+  'rangkasbitung','rembang','salatiga','semarang','serang','slawi','solo','sragen',
+  'subang','sukabumi','surabaya','tangerang','tasikmalaya','tegal','temanggung','ungaran',
+  'wonogiri','wonosobo','yogyakarta'
+];
+
+export function kotaTerbaruDates() {
+  let max = homeDates.updated;
+  for (const slug of KOTA_SLUGS) {
+    const d = cityPageDates(slug);
+    if (d.updated > max) max = d.updated;
+  }
+  return max;
+}
+
+// homeDates.updated = max(updated index.astro, updated semua kota)
+if (homeDates.updated < kotaTerbaruDates()) {
+  homeDates.updated = kotaTerbaruDates();
+}
