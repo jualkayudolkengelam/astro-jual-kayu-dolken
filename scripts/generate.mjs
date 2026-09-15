@@ -228,6 +228,13 @@ for (const tugas of plan) {
     // pindahkan ke belakang agar urutan "terlama" bergilir
     dataBaru.konteks.push(dataBaru.konteks.shift());
   } else {
+    // JANGAN buang blok konteks lama: merge ke hasil baru
+    const konteksLama = dataBaru.konteks ?? [];
+    if (Array.isArray(hasil.konteks)) {
+      hasil.konteks = [...hasil.konteks, ...konteksLama];
+    } else {
+      hasil.konteks = konteksLama;
+    }
     writeFileSync(tugas.file, JSON.stringify(hasil, null, 2) + '\n');
     sukses++;
     console.log(`✔ ${tugas.file} (${jenis})`);

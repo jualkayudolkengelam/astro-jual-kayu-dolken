@@ -13,5 +13,11 @@
       "q": "Apakah ada sistem invoice untuk pesanan perusahaan di Cikarang?",
       "a": "Ya, untuk order perusahaan kami menyediakan sistem invoice yang dapat Anda gunakan untuk administrasi pembelian, cukup beri detail perusahaan dan jumlah yang diperlukan saat menghubungi kami via telepon atau WhatsApp."
     }
+  ],
+  "konteks": [
+    {
+      "topik": "iklim",
+      "teks": "Cikarang memiliki iklim tropis dengan curah hujan yang cukup merata sepanjang tahun, terutama pada musim hujan. Kelembaban tinggi dan hujan rutin menuntut bahan bangunan yang tahan terhadap air dan jamur agar struktur tetap awet. Kayu gelam asli Sumatera, yang secara alami tahan terhadap air dan jamur, menjadi pilihan yang sesuai untuk kebutuhan konstruksi di wilayah ini."
+    }
   ]
 }
