@@ -1,12 +1,25 @@
 ---
 import { products, rupiah, waLink } from '../data/site';
+
+interface Props {
+  /** URL halaman harga dedicated (opsional) — H2 jadi link ke sini utk sinyal SEO. */
+  hargaHref?: string;
+}
+
+const { hargaHref } = Astro.props;
 ---
 
 <section id="harga" class="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 md:py-24">
   <div class="reveal mx-auto mb-12 max-w-xl text-center">
     <p class="text-sm font-bold uppercase tracking-widest text-wood-500">Daftar Harga</p>
     <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-wood-900 sm:text-4xl">
-      Harga Kayu Dolken per Batang
+      {hargaHref ? (
+        <a href={hargaHref} class="hover:text-moss-600 hover:underline underline-offset-4">
+          Harga Kayu Dolken per Batang
+        </a>
+      ) : (
+        'Harga Kayu Dolken per Batang'
+      )}
     </h2>
     <p class="mt-3 text-wood-600">
       Panjang standar 400 cm (4 meter). Kualitas terbaik dengan harga termurah —
