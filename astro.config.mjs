@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
-import { homeDates, terdekatDates, cityPageDates } from './src/lib/dates.js';
+import { homeDates, terdekatDates, hargaPerBatangDates, cityPageDates } from './src/lib/dates.js';
 
 // Muat .env eksplisit utk config file — baca LANGSUNG (bukan via import SITE_URL,
 // karena import ES module di-hoist & jalan sebelum kode ini dieksekusi).
@@ -22,6 +22,7 @@ const SITE_URL = resolveSiteUrl();
 function lastmodFor(pathname) {
   if (pathname === '/') return homeDates.updated;
   if (pathname === '/jual-kayu-dolken-terdekat/') return terdekatDates.updated;
+  if (pathname === '/harga-kayu-dolken-per-batang/') return hargaPerBatangDates.updated;
   const m = pathname.match(/^\/kayu-dolken-(.+?)\/$/);
   if (m) return cityPageDates(decodeURIComponent(m[1])).updated;
   return homeDates.updated;
