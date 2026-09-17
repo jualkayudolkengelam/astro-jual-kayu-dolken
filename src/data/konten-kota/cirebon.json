@@ -1,5 +1,5 @@
 {
-  "intro": "Sedang menggarap proyek bangunan di Cirebon tapi khawatir kayu penyangga cepat lapuk karena tanah lembap? Gunakan kayu dolken gelam asli hutan Sumatera yang secara alami tahan air dan jamur karena tumbuh di rawa. Pak Amirudin Abdul Karim siap kirim langsung ke lokasi Anda dengan sistem bayar di tempat agar transaksi lebih tenang dan aman.",
+  "intro": "Sedang mengerjakan proyek di Cirebon dan butuh bahan yang tahan lama di area lembap? Kayu dolken gelam asli hutan Sumatera yang kami tawarkan sudah terbukti tahan air dan jamur karena tumbuh di rawa, jadi cocok untuk fondasi atau penyangga di tanah basah. Dengan sistem bayar di tempat dan gratis ongkir ke Pulau Jawa, Anda bisa membayar setelah barang tiba di lokasi tanpa khawatir. Amirudin Abdul Karim siap membantu Anda dari pemesanan sampai pengiriman.",
   "faq": [
     {
       "q": "Apakah kayu dolken gelam ini cocok untuk lahan yang sering tergenang air di Cirebon?",
@@ -12,6 +12,11 @@
     {
       "q": "Apakah tersedia opsi pembayaran untuk pesanan atas nama perusahaan?",
       "a": "Ya, bagi pelanggan perusahaan yang memesan untuk kebutuhan proyek, kami menyediakan sistem pembayaran melalui invoice."
+    },
+    {
+      "q": "Apakah ada ongkir gratis jika saya mengirimkan kayu dolken gelam ke alamat di Pulau Jawa dari Cirebon?",
+      "a": "Ya, kami memberikan gratis ongkos kirim ke seluruh wilayah Pulau Jawa. Untuk daerah luar Jawa seperti Sulawesi, ongkir dan harga bisa diskusikan langsung."
     }
-  ]
+  ],
+  "konteks": []
 }
