@@ -1,5 +1,5 @@
 {
-  "intro": "Butuh kayu dolken murah di Donggala untuk proyek bangunan atau perbaikan rumah? Kami menyuplai kayu gelam asli dari hutan Sumatera yang sudah terbukti tahan terhadap air dan jamur, cocok untuk Musim hujan ini. Dengan sistem COD dan ongkir gratis ke Pulau Jawa, serta negosiasi langsung untuk Sulawesi, Anda bisa membayar setelah barang tiba.",
+  "intro": "Butuh kayu dolken murah di Donggala untuk proyek bangunan atau perbaikan rumah? Kami menyuplai kayu gelam asli dari hutan Sumatera yang legal dan sudah terbukti tahan terhadap air dan jamur karena habitat rawa, cocok untuk Musim hujan ini. Dengan sistem COD, ongkir gratis ke Pulau Jawa, serta nego langsung untuk Sulawesi dan sistem invoice untuk pesanan perusahaan, Anda bisa membayar setelah barang tiba.",
   "faq": [
     {
       "q": "Apakah kayu dolken bisa dikirim ke Donggala?",
@@ -10,12 +10,13 @@
       "a": "Telepon nomor yang tertera di halaman ini atau kirim WhatsApp. Sebutkan panjang (standar 4 meter), diameter yang dibutuhkan, dan titik lokasi — penawaran diberikan saat itu juga."
     },
     {
-      "q": "Berapa ongkos kirim kayu dolken ke Donggala?",
-      "a": "Untuk wilayah Sulawesi Tengah, ongkir paling pas dibicarakan langsung sesuai jumlah batang dan rute — hubungi kami untuk penawaran terbaik."
-    },
-    {
       "q": "Bagaimana cara menyimpan kayu dolken agar tidak mudah busuk ketika musim hujan tiba?",
       "a": "Simpan kayu di tempat beratelap dan terlindung dari air hujan langsung, pastikan aliran udara cukup agar tidak terlalu basah. Karena kayu gelam sudah memiliki sifat tahan air secara alami, penyimpanan yang baik akan menjaga kualitasnya sampai dipakai."
+    },
+    {
+      "q": "Apakah ada sistem invoice untuk pesanan perusahaan di Donggala?",
+      "a": "Ya. Untuk order perusahaan kami menyediakan sistem invoice yang dapat Anda minta saat melakukan pemesanan melalui telepon atau WhatsApp. Pembayaran dilakukan sesuai terms yang disepakati setelah barang tiba dan dicek."
     }
-  ]
+  ],
+  "konteks": []
 }
