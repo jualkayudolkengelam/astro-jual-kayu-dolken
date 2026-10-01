@@ -1,5 +1,5 @@
 {
-  "intro": "Butuh kayu dolken untuk proyek di Jakarta Utara? Kami menyediakan kayu gelam asli dari hutan Sumatera yang sudah teruji kuat terhadap air dan jamur, sehingga cocok untuk bangunan yang akan dihadapkan ke kondisi cuaca tropis. Harga mulai Rp15.000 per batang dengan sistem bayar di tempat, dan ongkir gratis ke seluruh Pulau Jawa, termasuk Jakarta Utara. Silakan telepon atau WhatsApp kami untuk konsultasi gratis.",
+  "intro": "Butuh kayu dolken untuk proyek di Jakarta Utara? Kami menyediakan kayu gelam asli dari hutan Sumatera yang tahan air dan jamur, ideal untuk konstruksi jambatan kecil, rumah panggung, atau pier yang akan menghadapi hujan deras di musim penghujan. Harga mulai Rp15.000 per batang dengan sistem bayar di tempat, dan ongkir gratis ke seluruh Pulau Jawa, termasuk Jakarta Utara. Selain itu, kami bisa memberikan tips sederhana untuk pemula mengenai cara menyimpan dan memasangkan kayu agar tetap awet.",
   "faq": [
     {
       "q": "Apakah kayu dolken bisa dikirim ke Jakarta Utara?",
@@ -12,6 +12,11 @@
     {
       "q": "Apakah kayu dolken cocok untuk digunakan saat musim hujan di Jakarta Utara?",
       "a": "Ya. Karena habitatnya rawa, kayu gelam memiliki sifat alami tahan air dan jamur, sehingga tidak mudah busuk meski terkena hujan deras. Namun, sebaiknya setelah pemasangan, pastikan permukaan kayu tidak tertutup lama oleh endapan lumpur atau daun agar sirkulasi udara tetap baik."
+    },
+    {
+      "q": "Apakah ada tips untuk pemula yang ingin menggunakan kayu dolken pertama kali?",
+      "a": "Untuk pemula, pastikan kayu yang Anda pilih memiliki diameter sesuai kebutuhan (4–12 cm) dan panjang 4 meter. Simpan kayu di tempat yang berairasi, tidak langsung menyentuh tanah atau air pookan agar tidak menyerap kelebihan kelembaban sebelum pemasangan. Saat memasang, beri sedikit ruang antar kayu untuk sirkulasi udara sehingga kayu tetap stabil selama penggunaan."
     }
-  ]
+  ],
+  "konteks": []
 }
