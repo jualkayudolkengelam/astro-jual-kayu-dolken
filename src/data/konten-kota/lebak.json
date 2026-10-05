@@ -12,6 +12,11 @@
     {
       "q": "Apakah ada tips bagi pemula yang ingin mengorder kayu dolken untuk pertama kalinya?",
       "a": "Pastikan Anda menentukan diameter yang diperlukan sesuai beban struktur (misal 4-6 cm untuk rangka ringan, 8-12 cm untuk balok utama), konfirmasi panjang standar 4 meter, dan beri tahu lokasi pengiriman agar kami bisa mengatur jadwal gratis ongkir ke Pulau Jawa."
+    },
+    {
+      "q": "Apakah saya bisa mendapatkan invoice untuk pembelian kayu dolken jika saya mewakili perusahaan atau kontraktor?",
+      "a": "Ya, kami menyediakan sistem invoice untuk order perusahaan. Anda cukup memberikan data perusahaan dan kami akan mengirimkan tagihan setelah barang diterima, sesuai dengan ketentuan pembayaran di tempat."
     }
-  ]
+  ],
+  "konteks": []
 }
