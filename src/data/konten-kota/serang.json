@@ -1,17 +1,18 @@
 {
-  "intro": "Kayu gelam asli dari hutan Sumatera siap dikirim ke berbagai wilayah Jawa, termasuk daerah lain yang butuh bahan bangunan tahan lama. Dengan sifat alami yang tahan air dan tidak mudah busuk, produk ini cocok untuk fondasi, pagar, atau konstruksi lantai. Harga mulai dari Rp15.000 per batang dengan panjang standar 4 meter dan diameter 4–12 cm. Pembayaran bisa dilakukan COD setelah barang tiba, dan ongkir gratis ke seluruh Pulau Jawa.",
+  "intro": "Di serang, pembangunan rumah dan bangunan kecil sering membutuhkan bahan yang tahan lama terhadap kelembaban. Kayu gelam asli hutan Sumatera yang kami tawarkan memiliki sifat alami tahan air dan tidak mudah busuk, sehingga cocok untuk fondasi, pagar, atau lantai di daerah dengan curah hujan tinggi. Dengan diameter 4–12 cm, panjang standar 4 meter, dan harga mulai Rp15.000 per batang, Anda bisa memesan secara COD dan gratis ongkir ke seluruh Pulau Jawa, termasuk daerah sekitar serang.",
   "faq": [
     {
-      "q": "Apakah ada batas minimum pembelian untuk order COD?",
-      "a": "Tidak ada minimum batang, Anda bisa memesan dari satu batang saja. Harga tetap Rp15.000 per batang dan pembayaran dilakukan setelah barang tiba."
+      "q": "Apakah pembayaran COD bisa dilakukan setelah saya memeriksa kayu yang diterima?",
+      "a": "Ya, pembayaran dilakukan setelah barang tiba dan Anda memeriksa kondisi kayu. Harga tetap Rp15.000 per batang tanpa minimum pembelian."
     },
     {
-      "q": "Bagaimana cara memilih diameter yang tepat untuk proyek fondasi rumah?",
-      "a": "Untuk fondasi rumah tinggal, diameter 6–8 cm biasanya cukup kuat, sementara untuk struktur yang membebani lebih berat seperti bangunan gedung atau jembatan kecil, pilih diameter 10–12 cm. Sesuaikan dengan beban yang akan ditahan dan konsultasikan dengan tukar jika perlu."
+      "q": "Apakah diameter 4–6 cm cukup untuk konstruksi atap ringan atau pergola?",
+      "a": "Ya, untuk beban ringan seperti atap kayu atau pergola, diameter 4–6 cm biasanya cukup, sementara fondasi yang menahan beban lebih berat memerlukan diameter 8–12 cm. Sesuaikan dengan beban yang akan ditahan dan konsultasikan dengan tukang jika perlu."
     },
     {
-      "q": "Apakah kayu dolken tetap stabil ketika digunakan di daerah dengan curah hujan tinggi?",
-      "a": "Ya, kayu gelam asli dari habitat rawa memiliki sifat alami tahan air dan tidak mudah busuk, sehingga cocok untuk area dengan curah hujan tinggi seperti daerah pantai atau lahan basah."
+      "q": "Bagaimana cara menyimpan kayu gelam selama musim hujan supaya tidak rusak?",
+      "a": "Karena kayu gelam sudah memiliki sifat alami tahan air dan tidak mudah busuk, cukup tempatkan kayu di tempat berairasi, jangan biarkan air pooled mengendap, dan tutupi dengan tarp jika akan disimpan lama di luar."
     }
-  ]
+  ],
+  "konteks": []
 }
